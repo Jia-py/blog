@@ -12,7 +12,7 @@ tags:
 
 
 
-## ZJU Earth Big Data
+## 1. ZJU Earth Big Data
 ### 项目相关链接
 [项目算法代码](https://github.com/ZJUEarthData)  
 [项目Bilibili主站](https://space.bilibili.com/616904352/)  
@@ -40,7 +40,7 @@ XGBoost是目前精确度最高的ML算法之一，主要了解其发展历史
 
   
 
-## Los Angeles Covid-19 Computational challenge
+## 2. Los Angeles Covid-19 Computational challenge
 > Our team Contemporary Li Shizhen won the second place  
 
 ### 相关链接 Links
