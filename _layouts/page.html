@@ -105,9 +105,15 @@ layout: default
                         {% if site.sidebar-avatar %}
                             <img src="{{site.sidebar-avatar}}" />
                         {% endif %}
+                        <!-- 个人描述 -->
                         {% if site.sidebar-about-description %}
                             <p>{{site.sidebar-about-description}}</p>
                         {% endif %}
+                        <!-- email -->
+                        {% if site.sidebar-email %}
+                            <p style="text-align:center;font-family: Arial">{{site.sidebar-email}}</p>
+                        {% endif %}
+
                         <!-- SNS Link -->
                         <ul class="list-inline">
                             {% if site.RSS %}
@@ -174,7 +180,7 @@ layout: default
                     </div>
                 </section>
 
-                <p style="text-align:center;font-family: Arial">email:jiapengyue@zju.edu.cn</p>
+
 
                 <!-- Friends Blog -->
                 {% if site.friends %}
