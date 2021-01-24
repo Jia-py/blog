@@ -4,7 +4,7 @@ title:      "Coursera-Scala环境配置"
 subtitle:   "Coursera-Scala Environment Configuration"
 date:       2021-01-24 17:46:00
 author:     "Jpy"
-header-img: "img/coursera.gif"
+header-img: "img/coursera.jpg"
 tags:
     - Study
 ---
