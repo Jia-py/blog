@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Coursera-Scala双语字幕设置及裸连方法"
-subtitle:   "Coursera-Scala subtitle & connection settings"
+title:      "Coursera双语字幕设置及裸连方法"
+subtitle:   "Coursera subtitle & connection settings"
 date:       2021-01-24 17:47:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
@@ -20,7 +20,7 @@ tags:
 > 参考链接：https://www.zhihu.com/question/302709745/answer/954417676
 
 ### 字幕大小修改
-- click👉下载[chrome插件商城](https://link.zhihu.com/?target=https%3A//chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne/related%3Fhl%3Dzh-CN)
+- click👉下载[chrome插件](https://link.zhihu.com/?target=https%3A//chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne/related%3Fhl%3Dzh-CN)
 - 直接添加该插件到浏览器
 - 新建一段代码 video::-webkit-media-text-track-display{font-size:60%;}
 - 在下方可以设置代码应用的网址范围
