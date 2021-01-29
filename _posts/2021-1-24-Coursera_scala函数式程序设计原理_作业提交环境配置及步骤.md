@@ -7,6 +7,8 @@ author:     "Jpy"
 header-img: "img/coursera.jpg"
 tags:
     - Study
+    - Coursera
+    - Scala
 ---
 
 ### Coursera中Scala课程推荐使用的环境为Intellij IDEA + sbt
