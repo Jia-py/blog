@@ -26,7 +26,4 @@ tags:
 
 是一种Boosting(集成)算法
 
-$$
-e = m c^2
-$$
 $e = m c^2$
