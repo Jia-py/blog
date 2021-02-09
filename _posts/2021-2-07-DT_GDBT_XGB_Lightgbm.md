@@ -50,7 +50,7 @@ tags:
 图中的分布计算得到的最终信息量为：$\frac{1}{6}log_26 + \frac{1}{6}log_26+\frac{1}{6}log_22+\frac{1}{6}log_26=1.792$
 
 所以得出计算一般分布的信息量（熵）：  
-$\Sigma p_{i} \log _{2} p_{i}^{-1}$  
+$\Sigma p_{i} \log 2 p i^{-1}$  
 
 参考资料：[为什么信息还有单位？如何计算信息量？](https://www.bilibili.com/video/BV1jt411b7o3)
 
@@ -101,6 +101,7 @@ $$
 返回最佳切分的特征和特征值  
 
 切分后的最终结果示例：  
+
 $$
 f(x)=\left\{\begin{array}{ll}
 5.63, & x<2.5 \\
@@ -111,6 +112,8 @@ f(x)=\left\{\begin{array}{ll}
 8.91, & x \geq 8.5
 \end{array}\right.
 $$
+
+  
 具体例子可见[决策树的原理、推导、Python实现和Sklearn可视化](https://zhuanlan.zhihu.com/p/339380585)
 
 <h5 id="ID3">ID3决策树</h5>
