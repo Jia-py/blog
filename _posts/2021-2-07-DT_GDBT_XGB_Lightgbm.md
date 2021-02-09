@@ -49,8 +49,8 @@ tags:
 
 图中的分布计算得到的最终信息量为：$\frac{1}{6}log_26 + \frac{1}{6}log_26+\frac{1}{6}log_22+\frac{1}{6}log_26=1.792$
 
-所以得出计算一般分布的信息量（熵）：  
-$\Sigma p_{i} \log 2 p i^{-1}$  
+所以得出计算一般分布的信息量（熵）： $\Sigma p_{i} \log 2 p i^{-1}$ 
+
 
 参考资料：[为什么信息还有单位？如何计算信息量？](https://www.bilibili.com/video/BV1jt411b7o3)
 
@@ -75,12 +75,17 @@ Single_Gini：
 $$
 \operatorname{Gini}(D)=1-\sum_{k=1}^{K}\left(\frac{\left|C_{k}\right|}{|D|}\right)^{2}
 $$
+
+
 在该特征下，共有K种分类，$|C_k|$代表第k种分类的样本个数。$|D|$代表总样本数。
 
 Gini_Index: 在A特征下，分为D1与D2两类，在特征A下的基尼系数  
+
 $$
 \operatorname{Gini}(D, A)=\frac{\left|D_{1}\right|}{|D|} \operatorname{Gini}\left(D_{1}\right)+\frac{\left|D_{2}\right|}{|D|} \operatorname{Gini}\left(D_{2}\right)
 $$
+
+
 根据各个特征的基尼指数，选择基尼指数最小的为分类特征。
 
 **2. CART回归树**
@@ -113,7 +118,7 @@ f(x)=\left\{\begin{array}{ll}
 \end{array}\right.
 $$
 
-  
+
 具体例子可见[决策树的原理、推导、Python实现和Sklearn可视化](https://zhuanlan.zhihu.com/p/339380585)
 
 <h5 id="ID3">ID3决策树</h5>
@@ -124,26 +129,28 @@ $$
 
 ID3决策树只能用于**分类问题**
 
-下面为ID3进行一次分类的步骤：
+下面为ID3进行一次分类的步骤：  
 
-> 计算初始熵Initial_entropy：$\Sigma p_{i} \log _{2} p_{i}^{-1}$，其中，$p_i$为不同类别的占比（概率）。
->
-> 初始化信息增益 entropy_gain = 0
->
-> 遍历每个特征：
-> 	根据该特征的类别数n,将样本分为n类：
-> 		为n类计算熵**（根据y的分类）**，加总，得到切分后的总熵值 sum_entropy = $\sum_{k=1}^{n}\Sigma p_{ni} \log _{2} p_{ni}^{-1}$
->
-> ​		Tmp = Initial_entropy - sum_entropy 
->
-> ​		if Tmp > entropy_gain: entropy_gain = Tmp
->
-> 选择信息增益最大时的分类特征和分类方法
+计算初始熵Initial_entropy：$\Sigma p_{i} \log 2 p i^{-1}$，其中，$p_i$为不同类别的占比（概率）。  
 
-即，特征A对训练数据集D的信息增益g(D,A)，定义为集合D的经验熵H(D)与特征A给定条件下D的经验条件熵H(D|A)之差：
+初始化信息增益 entropy_gain = 0  
+
+遍历每个特征：  
+	根据该特征的类别数n,将样本分为n类：  
+		为n类计算熵**（根据y的分类）**，加总，得到切分后的总熵值 sum_entropy = $\sum_{k=1}^{n} \Sigma p_{ni} \log 2 p ni^{-1}$
+
+​		Tmp = Initial_entropy - sum_entropy   
+
+​		if Tmp > entropy_gain: entropy_gain = Tmp  
+
+选择信息增益最大时的分类特征和分类方法  
+
+即，特征A对训练数据集D的信息增益g(D,A)，定义为集合D的经验熵H(D)与特征A给定条件下D的经验条件熵H(D|A)之差：  
+
 $$
 g(D, A)=H(D)-H(D \mid A)
 $$
+  
 缺点：1.存在偏向于选择取值较多的特征的问题 2. 只能处理分类属性 3. 对训练样本的质量的依赖性强
 
 <h5 id="C4.5">C4.5决策树</h5>
@@ -152,14 +159,17 @@ $$
 
 其实与ID3非常相似，只是这里考虑的是**信息增益/训练集关于分类特征A的熵**
 
-公式为：
+公式为：  
 $$
 g_{R}(D, A)=\frac{g(D, A)}{H_{A}(D)}
 $$
-其中
+
+其中  
+
 $$
 H_{A}(D)=-\sum_{i=1}^{n} \frac{\left|D_{i}\right|}{|D|} \log _{2} \frac{\left|D_{i}\right|}{|D|}
 $$
+
 <h4 id="DTM">决策树小结</h4>
 
 
