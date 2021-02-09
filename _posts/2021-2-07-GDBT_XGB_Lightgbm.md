@@ -26,4 +26,11 @@ tags:
 
 是一种Boosting(集成)算法
 
-$e = m c^2$
+### XGBoost
+$
+\hat{\mathrm{y}}_{i}=\phi\left(x_{i}\right)=\sum_{k=1}^{K} f_{k}\left(x_{i}\right), f_{k} \in \mathrm{F}
+$
+
+$$
+\hat{\mathrm{y}}_{i}=\phi\left(x_{i}\right)=\sum_{k=1}^{K} f_{k}\left(x_{i}\right), f_{k} \in \mathrm{F}
+$$
