@@ -88,13 +88,21 @@ $$
 
 根据各个特征的基尼指数，选择基尼指数最小的为分类特征。
 
+例子：[决策树的基尼系数计算过程](https://blog.csdn.net/qq_35540187/article/details/111729115)  
+
+在该例子中，计算`Good Blood Circulation`的基尼系数的公式为：  
+
+$$
+\frac{164}{297} \times\left(1-\left(\frac{37}{164}\right)^{2}-\left(\frac{127}{164}\right)^{2}\right)+\frac{133}{297}\left(1-\left(\frac{100}{133}\right)^{2}-\left(\frac{33}{133}\right)^{2}\right)
+$$
+
 **2. CART回归树**
 
 ![CART算法](https://pic1.zhimg.com/v2-2650df8818dbc09e531ba2bfe9914ccc_r.jpg)
 
 其中，第一步首先寻找最优切分点。切为左右两部分，分别找到左右两部分的$c_1$和$c_2$，使得$\sum_{x_{i} \in R(j, s)}\left(y_{i}-c\right)^{2}$最小。
 
-第二步，根据找到的切分点s进行切分。
+第二步，根据找到的切分点s进行切分。注意这里的Nm为该部分的样本数，即这块求的是均值作为输出值。
 
 **如何找到最佳的切分特征呢**
 
@@ -136,8 +144,8 @@ ID3决策树只能用于**分类问题**
 * 初始化信息增益 entropy_gain = 0  
 
 * 遍历每个特征：  
-	* 根据该特征的类别数n,将样本分为n类：  
-		* 为n类计算熵**（根据y的分类）**，加总，得到切分后的总熵值 sum_entropy = $\sum_{k=1}^{n} \Sigma p_{ni} \log 2 p ni^{-1}$
+	* 根据该特征的类别数n,将样本分为n类,每类的概率为pk：  
+		* 为n类计算熵**（根据y的分类）**，加总，得到切分后的总熵值 sum_entropy = $\sum_{k=1}^{n} P_{k} \sum p_{n i} \log _{2} P_{n i}^{-1}$  
 	* Tmp = Initial_entropy - sum_entropy   
 	* if Tmp > entropy_gain: entropy_gain = Tmp  
 * 选择信息增益最大时的分类特征和分类方法  
@@ -163,7 +171,7 @@ $$
 g_{R}(D, A)=\frac{g(D, A)}{H_{A}(D)}
 $$
 
-其中  
+其中，**如果A有n个取值**，则其中数据集D关于特征A的熵为：  
 
 $$
 H_{A}(D)=-\sum_{i=1}^{n} \frac{\left|D_{i}\right|}{|D|} \log _{2} \frac{\left|D_{i}\right|}{|D|}
