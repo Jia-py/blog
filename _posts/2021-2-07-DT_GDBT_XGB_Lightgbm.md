@@ -145,7 +145,7 @@ ID3决策树只能用于**分类问题**
 
 * 遍历每个特征：  
 	* 根据该特征的类别数n,将样本分为n类,每类的概率为pk：  
-		* 为n类计算熵**（根据y的分类）**，加总，得到切分后的总熵值 sum_entropy = $\sum_{k=1}^{n} P_{k} \sum p_{n i} \log _{2} P_{n i}^{-1}$  
+		* 为n类计算熵**（根据y的分类）**，加总，得到切分后的总熵值 sum_entropy = $\sum_{k=1}^{n} P_{k} \sum p_{n i} \log _{2} P n i^{-1}$  
 	* Tmp = Initial_entropy - sum_entropy   
 	* if Tmp > entropy_gain: entropy_gain = Tmp  
 * 选择信息增益最大时的分类特征和分类方法  
