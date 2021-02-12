@@ -86,10 +86,13 @@ friends: [
         title: "Jia-py Blog",
         href: "http://Jia-py.github.io"
     },{
-        title: "My github",
+        title: "My_github",
         href: "https://github.com/Jia-py"
     },{
-        title: "Bro Forever",
+        title: "それじゃまたね",
         href: "https://www.zhihu.com/people/lv-jia-jin-43"
+    },{
+        title: "Gao_Wei",
+        href: "https://weibo.com/u/6404835110?is_hot=1#_rnd1613146455654"
     }
 ]

@@ -1,7 +1,7 @@
 ---
 
 layout:     post
-title:      "Earth_Data_Diamond云计算"
+title:      "Earth Data Diamond 云计算"
 subtitle:   "Diamond cloud computing"
 date:       2021-02-07 17:33:00
 author:     "Jpy"
