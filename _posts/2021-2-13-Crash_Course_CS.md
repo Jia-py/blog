@@ -2,7 +2,6 @@
 
 layout:     post
 title:      "Crash Course Computer Science"
-subtitle:   "Crash Course Computer Science"
 date:       2021-02-13 00:00:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
