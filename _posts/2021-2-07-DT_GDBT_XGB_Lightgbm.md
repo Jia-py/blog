@@ -2,7 +2,6 @@
 
 layout:     post
 title:      "DT-GBDT-XGB-Lightgbm"
-subtitle:   "DT-GBDT-XGB-Lightgbm"
 date:       2021-02-07 21:19:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
