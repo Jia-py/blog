@@ -44,9 +44,9 @@ header-img: ""
 				  </li> -->
 				 <div class="post-preview">
 				    <a href="{{ post.url | prepend: site.baseurl }}">
-				        <h4 class="post-title">
+				        <h5 class="post-title">
                             {{ post.title }}
-				        </h4>
+				        </h5>
 						<!--副标签-->
 				        <!-- {% if post.subtitle %}
 				        <h3 class="post-subtitle">
@@ -56,7 +56,7 @@ header-img: ""
 				    </a>
 				    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
 				</div>
-				<hr>
+				<!-- <hr> -->
 				{% endfor %}
 			</div>
 			{% endfor %}
