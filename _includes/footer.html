@@ -185,9 +185,9 @@
         position: fixed;
         bottom: 90px; /* 小按钮到浏览器底边的距离 */
         right: 10px; /* 小按钮到浏览器右边框的距离 */
-        color: rgb(64,120,192); /* 小按钮中文字的颜色 */
+        color: rgb(255, 255, 255); /* 小按钮中文字的颜色 */
         z-index: 1000;
-        background: rgb(233, 243, 250); /* 小按钮底色 */
+        background: rgb(0, 0, 0); /* 小按钮底色 */
         padding: auto; /* 小按钮中文字到按钮边缘的距离 */
         border-radius: 50px; /* 小按钮圆角的弯曲程度（半径）*/
         -moz-border-radius: 50px;
@@ -198,8 +198,8 @@
       }
       
       #search-button div:hover { /* 小按钮上有鼠标悬停时 */
-        background: rgba(64,120,192,0.8); /* 小按钮的底色 */
-        color: #fff; /* 文字颜色 */
+        background: rgba(255, 255, 255, 0.8); /* 小按钮的底色 */
+        color: rgb(0, 0, 0); /* 文字颜色 */
       }
 </style>
 <div class="cb-search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
@@ -224,3 +224,4 @@
 
 
 <!--搜索组件结束-->
+{% include top.html %}
