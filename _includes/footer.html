@@ -174,18 +174,45 @@
 {% endif %}
 
 <!--搜索组件-->
-
+<style type="text/css">
+    #search-button div { /* back to top button */
+        text-align: center;
+        line-height: 50px;
+        font-size: 16px;
+        width:50px;
+        height: 50px;
+        position: fixed;
+        bottom: 10px; /* 小按钮到浏览器底边的距离 */
+        right: 60px; /* 小按钮到浏览器右边框的距离 */
+        color: rgb(64,120,192); /* 小按钮中文字的颜色 */
+        z-index: 1000;
+        background: #fff; /* 小按钮底色 */
+        padding: auto; /* 小按钮中文字到按钮边缘的距离 */
+        border-radius: 50px; /* 小按钮圆角的弯曲程度（半径）*/
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        font-weight: bold; /* 小按钮中文字的粗细 */
+        text-decoration: none !important;
+        box-shadow:0 1px 2px rgba(0,0,0,.15), 0 1px 0 #ffffff inset;
+      }
+      
+      #search-button div:hover { /* 小按钮上有鼠标悬停时 */
+        background: rgba(64,120,192,0.8); /* 小按钮的底色 */
+        color: #fff; /* 文字颜色 */
+      }
+</style>
 <div class="cb-search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
       opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
     <input type="text" class="form-control cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="文章标题 日期 标签" >
 
-    <div style="position: fixed; top: 16px; right: 16px;">
-        <img src="/search/img/cb-close.png"  id="cb-close-btn"/>
+    <div style="position: fixed; top: 60px; right: 60px;height:50px;width:50px">
+        <img style="width:100% src="/search/img/cb-close.png"  id="cb-close-btn"/>
     </div>
 </div>
 
-<div style="position: fixed; right: 60px; bottom: 70px;">
-    <img src="/search/img/cb-search.png"  id="cb-search-btn"  title="Double Click Ctrl to Search"/>
+<div id="search-button">
+    <!-- <img src="/search/img/cb-search.png"  id="cb-search-btn"  title="Double Click Ctrl to Search"/> -->
+    <div id="cb-search-btn" >Search</div>
 </div>
 
 <link rel="stylesheet" href="{{ "/search/css/cb-search.css" | prepend: site.baseurl }}">
