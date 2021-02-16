@@ -1,3 +1,55 @@
+<!--搜索组件-->
+<!--这里修改为与TOP一样的样式-->
+<style type="text/css">
+  #search-button div { /* back to top button */
+      text-align: center;
+      line-height: 70px;
+      font-size: 16px;
+      width:70px;
+      height: 70px;
+      position: fixed;
+      bottom: 170px; /* 小按钮到浏览器底边的距离 */
+      right: 10px; /* 小按钮到浏览器右边框的距离 */
+      color: rgb(255, 255, 255); /* 小按钮中文字的颜色 */
+      z-index: 1000;
+      background: rgb(0, 0, 0); /* 小按钮底色 */
+      padding: auto; /* 小按钮中文字到按钮边缘的距离 */
+      border-radius: 50px; /* 小按钮圆角的弯曲程度（半径）*/
+      -moz-border-radius: 50px;
+      -webkit-border-radius: 50px;
+      font-weight: bold; /* 小按钮中文字的粗细 */
+      text-decoration: none !important;
+      box-shadow:0 1px 2px rgba(0,0,0,.15), 0 1px 0 #ffffff inset;
+    }
+    
+    #search-button div:hover { /* 小按钮上有鼠标悬停时 */
+      background: rgba(255, 255, 255, 0.8); /* 小按钮的底色 */
+      color: rgb(0, 0, 0); /* 文字颜色 */
+    }
+</style>
+<div class="cb-search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
+    opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+  <input type="text" class="form-control cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="文章标题 日期 标签" >
+
+  <div style="position: fixed; top: 60px; right: 60px;height:50px;width:50px">
+      <img style="width:100%" src="/search/img/cb-close.png"  id="cb-close-btn"/>
+  </div>
+</div>
+
+<div id="search-button">
+  <!-- <img src="/search/img/cb-search.png"  id="cb-search-btn"  title="Double Click Ctrl to Search"/> -->
+  <div id="cb-search-btn" >Search</div>
+</div>
+
+<link rel="stylesheet" href="{{ "/search/css/cb-search.css" | prepend: site.baseurl }}">
+
+<script src="{{ "/search/js/bootstrap3-typeahead.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/search/js/cb-search.js" | prepend: site.baseurl }}"></script>
+
+
+
+<!--搜索组件结束-->
+
 <style type="text/css">
     #backtop a { /* back to top button */
         text-align: center;
@@ -6,7 +58,7 @@
         width:70px;
         height: 70px;
         position: fixed;
-        bottom: 10px; /* 小按钮到浏览器底边的距离 */
+        bottom: 90px; /* 小按钮到浏览器底边的距离 */
         right: 10px; /* 小按钮到浏览器右边框的距离 */
         color: rgb(255, 255, 255); /* 小按钮中文字的颜色 */
         z-index: 1000;
@@ -27,5 +79,9 @@
 </style>
 
 <div id="backtop">
-    <a href="#">TOP</a>
- </div> 
+    <a href="#">Top</a>
+ </div>
+<div id="backtop" style="bottom:10px">
+  <a href="#bottom">Down</a>
+</div>
+
