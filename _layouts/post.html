@@ -47,7 +47,7 @@ layout: default
     <div class="container">
         <div class="row">
 
-    <!-- Post Container -->
+            <!-- Post Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
@@ -82,7 +82,7 @@ layout: default
                 <!-- 多说 Share end-->
                 {% endif %}
 
-
+                <!--前一篇后一篇按钮-->
                 <ul class="pager">
                     {% if page.previous.url %}
                     <li class="previous">
@@ -120,7 +120,7 @@ layout: default
             </div>
 
 
-    <!-- Sidebar Container -->
+            <!-- Sidebar Container TAGS和FRIENDS标签-->
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
@@ -154,6 +154,10 @@ layout: default
                 </ul>
                 {% endif %}
             </div>
+
+            <!--gitalk组件-->
+            {% include gitalk.html %}
+
         </div>
     </div>
 </article>
