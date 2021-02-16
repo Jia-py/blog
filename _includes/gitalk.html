@@ -6,16 +6,19 @@
 <div id="gitalk-container"></div>
 
 <!-- 生成 gitalk 插件-->
-var gitalk = new Gitalk({
-  clientID: '1d6340f36a10a8327537',
+<script>
+    var gitalk = new Gitalk({
+        clientID: '1d6340f36a10a8327537',
 
-  clientSecret: 'bfca8896141defdec5ed2d0703853375b6636af7',
+        clientSecret: 'bfca8896141defdec5ed2d0703853375b6636af7',
 
-  repo: 'blogtalk',
-  owner: 'Jia-py',
-  admin: ['Jia-py'],
-  id: location.href,
-  distractionFreeMode: false
-})
+        repo: 'Jia-py.github.io',
+        owner: 'Jia-py',
+        admin: ['Jia-py'],
+        id: location.href,
+        distractionFreeMode: false
+    })
 
-gitalk.render('gitalk-container')
+
+    gitalk.render('gitalk-container')
+</script>
