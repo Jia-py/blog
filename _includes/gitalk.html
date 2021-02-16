@@ -15,7 +15,7 @@
         repo: 'Jia-py.github.io',
         owner: 'Jia-py',
         admin: ['Jia-py'],
-        id: md5(window.location.pathname),
+        id: decodeURI(location.pathname),
         distractionFreeMode: false,
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token'
     })
