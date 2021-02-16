@@ -45,7 +45,8 @@ jQuery(document).ready(function($) {
                 previousTop: 0
             },
             function() {
-                var currentTop = $(window).scrollTop();
+                var currentTop = $(window).scrollTop(),
+                    $catalog = $('.side-catalog');
                 //check if user is scrolling up
                 if (currentTop < this.previousTop) {
                     //if scrolling up...
@@ -60,6 +61,15 @@ jQuery(document).ready(function($) {
                     if (currentTop > headerHeight && !$('.navbar-custom').hasClass('is-fixed')) $('.navbar-custom').addClass('is-fixed');
                 }
                 this.previousTop = currentTop;
+
+
+                //adjust the appearance of side-catalog
+                $catalog.show()
+                if (currentTop > (bannerHeight + 41)) {
+                    $catalog.addClass('fixed')
+                } else {
+                    $catalog.removeClass('fixed')
+                }
             });
     }
 });
