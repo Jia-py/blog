@@ -130,7 +130,7 @@
   border-radius: 4px;
   background-color: #f5f5f5;
 }
-.side-catalog .catalog-body .active a {
+.side-catalog .catalog-body .active li {
   color: #0085a1 !important;
 }
 @media (max-width: 1200px) {
