@@ -171,10 +171,19 @@ layout: default
                 </ul>
                 {% endif %}
             </div>
+
+
+            <!--gitalk组件-->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+                {% include gitalk.html %}
+            </div>
+
         </div>
 
-        <!--gitalk组件-->
-        {% include gitalk.html %}
+        
 
     </div>
 </article>
@@ -254,16 +263,3 @@ layout: default
 </style>
 {% endif %}
 
-<!--目录跟随滚动-->
-<!-- <script>
-    var bannerHeight  = $('.intro-header .container').height(); 
-    var currentTop = $(window).scrollTop(),
-                    $catalog = $('.side-catalog');
-    //adjust the appearance of side-catalog
-    $catalog.show()
-    if (currentTop > (bannerHeight + 41)) {
-        $catalog.addClass('fixed')
-    } else {
-        $catalog.removeClass('fixed')
-    }
-</script> -->
