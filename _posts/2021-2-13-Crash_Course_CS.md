@@ -12,12 +12,9 @@ tags:
 
 [Github 中文字幕](https://github.com/1c7/crash-course-computer-science-chinese)
 
-* [1.计算机早期历史 2.电子计算机 3.布尔逻辑和逻辑门 4.二进制 5.算术逻辑单元](#1)
-* [6.寄存器和内存 7.中央处理器](#2)
 
 
-
-<h2 id="1">计算机早期历史-Early Computing</h2>
+## 计算机早期历史-Early Computing
 
 人类在很早就拥有了计算的需求，计算机最早的形式是算盘，用珠子来表示不同的数字，不同行代表不同的位数。
 
@@ -105,8 +102,8 @@ ALU是计算单元，全称为`Arithmetic Logic Unit`
 
 
 
-<h2 id="2">寄存器和内存-Registers and RAM
-</h2>
+## 寄存器和内存-Registers and RAM
+
 
 一位的存储器：
 
