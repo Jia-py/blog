@@ -253,3 +253,16 @@ layout: default
     }
 </style>
 {% endif %}
+
+<script>
+    var bannerHeight  = $('.intro-header .container').height(); 
+    var currentTop = $(window).scrollTop(),
+                    $catalog = $('.side-catalog');
+    //adjust the appearance of side-catalog
+    $catalog.show()
+    if (currentTop > (bannerHeight + 41)) {
+        $catalog.addClass('fixed')
+    } else {
+        $catalog.removeClass('fixed')
+    }
+</script>
