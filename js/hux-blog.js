@@ -47,14 +47,14 @@ jQuery(document).ready(function($) {
 
     //primary navigation slide-in effect
     if ($(window).width() > MQL) {
-        var headerHeight = $('.navbar-custom').height(),
-            bannerHeight  = $('.intro-header .container').height();     
+        var headerHeight = $('.navbar-custom').height();
+            // bannerHeight  = $('.intro-header .container').height();     
         $(window).on('scroll', {
                 previousTop: 0
             },
             function() {
-                var currentTop = $(window).scrollTop(),
-                    $catalog = $('.side-catalog');
+                var currentTop = $(window).scrollTop();
+                    // $catalog = $('.side-catalog');
 
                 //check if user is scrolling up by mouse or keyborad
                 if (currentTop < this.previousTop) {
@@ -73,12 +73,12 @@ jQuery(document).ready(function($) {
 
 
                 //adjust the appearance of side-catalog
-                $catalog.show()
-                if (currentTop > (bannerHeight + 41)) {
-                    $catalog.addClass('fixed')
-                } else {
-                    $catalog.removeClass('fixed')
-                }
+                // $catalog.show()
+                // if (currentTop > (bannerHeight + 41)) {
+                //     $catalog.addClass('fixed')
+                // } else {
+                //     $catalog.removeClass('fixed')
+                // }
             });
     }
 });
