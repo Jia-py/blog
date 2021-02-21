@@ -24,10 +24,11 @@ header-img: ""
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <!--这里的样式为了和tag.html一致，所以用了tag的样式-->
             <div class="one-tag-list">
                 <div class="post-preview">
                     <!--时间线-->
-                    <ul>
+                    <!-- <ul> -->
                     {% for post in site.posts %}
 
                         {% unless post.next %}
@@ -44,7 +45,7 @@ header-img: ""
                         <a href="{{ post.url }}"><h5 class="post-title">{{ post.title }}</h5></a>
                         <p class="post-meta">{{ post.date | date:"%Y-%m-%d " }}</p>
                     {% endfor %}
-                    </ul>
+                    <!-- </ul> -->
                     <!--时间线结束-->
                 </div>
             </div>
