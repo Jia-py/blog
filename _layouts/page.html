@@ -2,6 +2,10 @@
 layout: default
 ---
 
+{% assign assets_base_url = site.baseurl %} 
+{% if site.jsdelivr-cdn-enable %} 
+    {% assign assets_base_url = "https://cdn.jsdelivr.net/gh/Jia-py/Jia-py.github.io" %} 
+{% endif %}
 
 <!-- Page Header -->
 <header class="intro-header" style="background-image: url('{{ assets_base_url }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
