@@ -48,6 +48,10 @@ github pages虽然部署非常方便，但有两个非常严重的问题。
 
    这种方法配置也比较简单，还是很推荐的。
 
+   [![yTn0zD.md.jpg](https://s3.ax1x.com/2021/02/21/yTn0zD.md.jpg)](https://imgchr.com/i/yTn0zD)
+
+   总体看来，提升的效果还是有的。
+
 5. 👍👍👍**（推荐）双线同步coding pages及github pages，使用DNS解析指向不同IP**
 
    这就是最终我选择的方式！这样的方式我目前认为是最好的了。其实就是根据访客ip的不同，我们为他指向不同的网址。**对于境内的访客，我们指向coding pages，对于境外的访客，我们指向github pages。**
