@@ -49,7 +49,7 @@ header-img: ""
 				</a>__SEPERATOR__
 				{% endfor %}
 				{% endcapture %}
-        {{ tags | split:'__SEPERATOR__' | sort }}
+        		{{ tags | split:'__SEPERATOR__' | sort }}
 			</div>
 
             <!-- 标签列表 -->
@@ -75,7 +75,7 @@ header-img: ""
 				        </h3> -->
 				        {% endif %}
 				    </a>
-				    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+				    <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p>
 				</div>
 				<!-- <hr> -->
 				{% endfor %}
