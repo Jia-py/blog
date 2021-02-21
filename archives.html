@@ -23,28 +23,31 @@ header-img: ""
 <!-- Main Content -->
 <div class="container">
 	<div class="row">
-		<!-- <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"> -->
-        <div class="post-preview">
-            <!--时间线-->
-            <ul>
-            {% for post in site.posts %}
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="one-tag-list">
+                <div class="post-preview">
+                    <!--时间线-->
+                    <ul>
+                    {% for post in site.posts %}
 
-                {% unless post.next %}
-                <h2 style="color: #0085a1;">{{ post.date | date: '%Y年' }}</h2>
-                {% else %}
-                {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-                {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
-                {% if year != nyear %}
-                    <h2 style="color: #0085a1;">{{ post.date | date: '%Y年' }}</h2>
-                {% endif %}
-                {% endunless %}
+                        {% unless post.next %}
+                        <h2 style="color: #0085a1;">{{ post.date | date: '%Y年' }}</h2>
+                        {% else %}
+                        {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+                        {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+                        {% if year != nyear %}
+                            <h2 style="color: #0085a1;">{{ post.date | date: '%Y年' }}</h2>
+                        {% endif %}
+                        {% endunless %}
 
-                <!-- <li font-family="-apple-system">{{ post.date | date:"%Y-%m-%d " }} <a href="{{ post.url }}">{{ post.title }}</a></li> -->
-                <a href="{{ post.url }}"><h5 class="post-title">{{ post.title }}</h5></a>
-                <p class="post-meta">{{ post.date | date:"%Y-%m-%d " }}</p>
-            {% endfor %}
-            </ul>
-            <!--时间线结束-->
-		</div>
+                        <!-- <li font-family="-apple-system">{{ post.date | date:"%Y-%m-%d " }} <a href="{{ post.url }}">{{ post.title }}</a></li> -->
+                        <a href="{{ post.url }}"><h5 class="post-title">{{ post.title }}</h5></a>
+                        <p class="post-meta">{{ post.date | date:"%Y-%m-%d " }}</p>
+                    {% endfor %}
+                    </ul>
+                    <!--时间线结束-->
+                </div>
+            </div>
+        </div>
 	</div>
 </div>
