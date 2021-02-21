@@ -26,7 +26,7 @@ header-img: ""
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <!--这里的样式为了和tag.html一致，所以用了tag的样式-->
             <div class="one-tag-list">
-                <div class="post-preview">
+                <div class="post-preview" style="text-align: center">
                     <!--时间线-->
                     <!-- <ul> -->
                     {% for post in site.posts %}
@@ -43,7 +43,7 @@ header-img: ""
 
                         <!-- <li font-family="-apple-system">{{ post.date | date:"%Y-%m-%d " }} <a href="{{ post.url }}">{{ post.title }}</a></li> -->
                         <a href="{{ post.url }}"><h5 class="post-title">{{ post.title }}</h5></a>
-                        <p class="post-meta">{{ post.date | date:"%Y-%m-%d " }}</p>
+                        <p class="post-meta" style="position:relative">{{ post.date | date:"%Y-%m-%d " }}</p>
                     {% endfor %}
                     <!-- </ul> -->
                     <!--时间线结束-->
