@@ -1,3 +1,10 @@
+<!--jsdelivr-cdn加速-->
+{% assign assets_base_url = site.url %} 
+{% if site.jsdelivr-cdn-enable %} 
+    {% assign assets_base_url = "https://cdn.jsdelivr.net/gh/Jia-py/Jia-py.github.io" %} 
+{% endif %}
+
+
 <!-- Footer -->
 <footer>
     <div class="container">
@@ -230,7 +237,7 @@
      * Doc: https://github.com/davist11/jQuery-One-Page-Nav
      * Fork by Hux to support padding
      */
-    async("{{ '/js/jquery.nav.js' | prepend: site.baseurl }}", function () {
+    async("{{ '/js/jquery.nav.js' | prepend: assets_base_url  }}", function () {
         $('.catalog-body').onePageNav({
             currentClass: "active",
             changeHash: !1,
