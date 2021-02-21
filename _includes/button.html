@@ -1,9 +1,3 @@
-<!--jsdelivr-cdn加速-->
-<!--初始化为baseurl，若开启cdn加速，则替换资源链接-->
-{% assign assets_base_url = site.baseurl %} 
-{% if site.jsdelivr-cdn-enable %} 
-    {% assign assets_base_url = "https://cdn.jsdelivr.net/gh/Jia-py/Jia-py.github.io" %} 
-{% endif %}
 <!--搜索组件-->
 <!--这里修改为与TOP一样的样式-->
 <style type="text/css">

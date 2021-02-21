@@ -1,5 +1,5 @@
 <!--jsdelivr-cdn加速-->
-<!--初始化为baseurl，若开启cdn加速，则替换资源链接-->
+<!--定义assets_base_url为baseurl，若开启cdn加速，则替换资源链接-->
 {% assign assets_base_url = site.baseurl %} 
 {% if site.jsdelivr-cdn-enable %} 
     {% assign assets_base_url = "https://cdn.jsdelivr.net/gh/Jia-py/Jia-py.github.io" %} 
@@ -11,20 +11,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ site.description }}">
     <meta name="keyword"  content="{{ site.keyword }}">
-    <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
+    <link rel="shortcut icon" href="{{ assets_base_url }}/img/favicon.ico">
 
     <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
 
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: assets_base_url }}">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ "/css/hux-blog.min.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/css/hux-blog.min.css" | prepend: assets_base_url }}">
 
     <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: assets_base_url }}">
 
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->

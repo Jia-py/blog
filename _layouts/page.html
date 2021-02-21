@@ -4,7 +4,7 @@ layout: default
 
 
 <!-- Page Header -->
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+<header class="intro-header" style="background-image: url('{{ assets_base_url }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
@@ -106,7 +106,7 @@ layout: default
                     <hr><h5><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h5>
                     <div class="short-about">
                         {% if site.sidebar-avatar %}
-                            <img src="{{site.sidebar-avatar}}" />
+                            <img src="{{site.sidebar-avatar | prepend: assets_base_url}}" />
                         {% endif %}
                         <!-- 个人描述 -->
                         {% if site.sidebar-about-description %}
@@ -195,15 +195,11 @@ layout: default
                 
                 <hr>
                 <!--访客地图-->
-                <h5>VISITORS MAP</h5>
-                <section>
-                    <!--revolvermaps访客地图-->
-                    <!-- <div style="display:inline-block;width:219px;"><script type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=5k8ubkdrfeu&amp;m=0c&amp;c=7ba1c7&amp;cr1=d16666&amp;crh1=ff0000&amp;br=5&amp;sx=0&amp;rs=100&amp;rg=50&amp;ds=0&amp;cw=ffffff&amp;cb=000000" async="async"></script></div> -->
+                <!-- <h5>VISITORS MAP</h5> -->
+                <!-- <section>
                     <div style="display:inline-block;width:219px;"><script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=5cl23ghmyfy&amp;m=0&amp;c=a0de71&amp;cr1=e85d5d&amp;f=arial&amp;l=33&amp;bv=100&amp;v0=40&amp;z=15&amp;hi=30&amp;he=8&amp;hc=000000&amp;rs=100" async="async"></script>
                     </div>
-                    <!-- <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=162447&w=219&t=m&d=F_6UHJiVmhrGTtApUBHhNpPjErdJWht1hmBkZtmtLkM&co=ffffff&cmo=5379ff&cmn=ff5353&ct=808080'></script> -->
-                    <!-- <script style="width:219px;height:219px" type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=F_6UHJiVmhrGTtApUBHhNpPjErdJWht1hmBkZtmtLkM"></script> -->
-                </section>
+                </section> -->
 
     		</div>
         {% endif %}
