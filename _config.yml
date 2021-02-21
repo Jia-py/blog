@@ -8,7 +8,6 @@ keyword: ""
 url: "https://github.com/Jia-py"              # your host, for absolute URL
 baseurl: "/Jia-py.github.io"         # for example, '/blog' if your blog hosted on 'host/blog'
 jsdelivr-cdn-enable: true
-repository: "/Jia-py/Jia-py.github.io"
 
 # SNS settings
 RSS: false

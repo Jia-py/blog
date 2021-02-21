@@ -1,3 +1,9 @@
+<!--jsdelivr-cdn加速-->
+<!--初始化为baseurl，若开启cdn加速，则替换资源链接-->
+{% assign assets_base_url = site.baseurl %} 
+{% if site.jsdelivr-cdn-enable %} 
+    {% assign assets_base_url = "https://cdn.jsdelivr.net/gh/Jia-py/Jia-py.github.io" %} 
+{% endif %}
 <!--搜索组件-->
 <!--这里修改为与TOP一样的样式-->
 <style type="text/css">
@@ -32,7 +38,7 @@
   <input type="text" class="form-control cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="文章标题 日期(yyyy-mm-dd) 标签" >
 
   <div style="position: fixed; top: 60px; right: 60px;height:50px;width:50px">
-      <img style="width:100%" src="/search/img/cb-close.png"  id="cb-close-btn"/>
+      <img style="width:100%" src="{{ "/search/img/cb-close.png" | prepend: assets_base_url }}"  id="cb-close-btn"/>
   </div>
 </div>
 
@@ -41,10 +47,10 @@
   <div id="cb-search-btn" >Search</div>
 </div>
 
-<link rel="stylesheet" href="{{ "/search/css/cb-search.css" | prepend: site.baseurl }}">
+<link rel="stylesheet" href="{{ "/search/css/cb-search.css" | prepend: assets_base_url }}">
 
-<script src="{{ "/search/js/bootstrap3-typeahead.min.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/search/js/cb-search.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/search/js/bootstrap3-typeahead.min.js" | prepend: assets_base_url }}"></script>
+<script src="{{ "/search/js/cb-search.js" | prepend: assets_base_url }}"></script>
 
 
 
