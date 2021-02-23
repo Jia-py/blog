@@ -900,7 +900,7 @@ body {
 .one-tag-list div{
   display: none
 }
-.one-tag-list.selected div{
+.one-tag-list.selected .post-preview{
   display:block
 }
 .one-tag-list .tag-text {
@@ -914,6 +914,7 @@ body {
 }
 .one-tag-list .post-preview {
   position: relative;
+  display: none
 }
 .one-tag-list .post-preview > a .post-title {
   font-size: 16px;
