@@ -145,12 +145,12 @@
 		$("div.one-tag-list span").on('click', function () {
             if(!($(this).parent().hasClass('selected'))){
                 $(this).parent().addClass('selected');
-			    $(this).nextAll().slideDown("slow");
+			    $(this).nextAll().slideDown("fast");
             }
 			else {
                 //$(this).parent().siblings().removeClass('selected').find('div').hide();
                 $(this).parent().removeClass('selected');
-			    $(this).nextAll().slideUp("slow");
+			    $(this).nextAll().slideUp("fast");
             }
 		});
 	});
