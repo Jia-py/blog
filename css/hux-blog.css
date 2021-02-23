@@ -896,6 +896,12 @@ body {
     line-height: 2 !important;
   }
 }
+.one-tag-list div{
+  display: none
+}
+.one-tag-list.selected div{
+  display:block
+}
 .one-tag-list .tag-text {
   font-weight: 200;
   /* Hux learn from
