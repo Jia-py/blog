@@ -56,7 +56,14 @@ header-img: ""
 			{% for tag in site.tags %}
 			<div class="one-tag-list">
 			  	<span class="fa fa-tag listing-seperator" id="{{ tag[0] }}">
-                    <p class="tag-text">{{ tag[0] }}</p>
+					<div style="display:flex">
+						<div style="flex-grow: 1;">
+							<img src="{{ /img/arrow.png | prepend: assets_base_url }}" style="height:34px;width:34px;CUPSOR:pointer">
+						</div>
+						<div style="flex-grow:10">
+							<p class="tag-text" style="text-align:center;">{{ tag[0] }}</p>
+						</div>
+					</div>
                 </span>
 				{% for post in tag[1] %}
 				  <!-- <li class="listing-item">
