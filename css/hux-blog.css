@@ -914,7 +914,7 @@ body {
 }
 .one-tag-list .post-preview {
   position: relative;
-  display: none
+  display: none;
 }
 .one-tag-list .post-preview > a .post-title {
   font-size: 16px;
