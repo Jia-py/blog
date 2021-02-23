@@ -145,7 +145,7 @@
 		$("div.one-tag-list span").on('click', function () {
 			$(this).parent().siblings().removeClass('selected').find('div').hide();
 			$(this).parent().addClass('selected');
-			$(this).next().slideDown(500);
+			$(this).nextAll().slideDown(500);
 		});
 	});
 </script>
