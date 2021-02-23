@@ -2,7 +2,7 @@
 .one-tag-list.selected .post-preview{
     display:block;
 }
-.one-tag-list.selected img{
+div.one-tag-list.selected img{
     -ms-transform:rotate(90deg); /* IE 9 */
 	-webkit-transform:rotate(90deg); /* Safari and Chrome */
     transform: rotate(90deg);
