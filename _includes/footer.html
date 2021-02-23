@@ -143,11 +143,10 @@
 <script>
     $(function () {
 		$("div.one-tag-list span").on('click', function () {
-            if(($(this).parent().hasClass('selected'))){
+            if($(this).parent().hasClass('selected')){
                 $(this).parent().removeClass('selected');
 			    $(this).nextAll().slideUp("fast");
-            }
-			else {
+            }else {
                 //$(this).parent().siblings().removeClass('selected').find('div').hide();
                 $(this).parent().addClass('selected');
 			    $(this).nextAll().slideDown("fast");
