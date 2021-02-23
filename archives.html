@@ -40,10 +40,10 @@ header-img: ""
                             <h2 style="color: #0085a1;">{{ post.date | date: '%Y年' }}</h2>
                         {% endif %}
                         {% endunless %}
-                    <div class="post-preview" style="text-align: center">
+                    <div class="post-preview">
                         <!-- <li font-family="-apple-system">{{ post.date | date:"%Y-%m-%d " }} <a href="{{ post.url }}">{{ post.title }}</a></li> -->
                         <a href="{{ post.url }}"><h5 class="post-title">{{ post.title }}</h5></a>
-                        <p class="post-meta" style="position:relative">{{ post.date | date:"%Y-%m-%d " }}</p>
+                        <p class="post-meta">{{ post.date | date:"%Y-%m-%d " }}</p>
                     </div>
                     {% endfor %}
                     <!-- </ul> -->
