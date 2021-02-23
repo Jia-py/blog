@@ -52,6 +52,11 @@ header-img: ""
         		{{ tags | split:'__SEPERATOR__' | sort }}
 			</div>
 
+			<div style="display:flex;margin-bottom:25px">
+				<button class="button-show" type="button" class="btn btn-primary btn-xs" style="border-radius:999em;margin-right:10px;padding:2px 7px">show all</button>
+				<button class="button-hide" type="button" class="btn btn-default btn-xs" style="border-radius:999em;padding:2px 7px">hide all</button>
+			</div>
+			
             <!-- 标签列表 -->
 			{% for tag in site.tags %}
 			<div class="one-tag-list">

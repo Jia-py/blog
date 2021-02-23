@@ -155,6 +155,16 @@
             }
 		});
 	});
+    $(function () {
+		$("button.button-show").on('click', function () {
+			$(this).parent().nextAll().addClass('selected');
+		});
+	});
+    $(function () {
+		$("button.button-hide").on('click', function () {
+			$(this).parent().nextAll().removeClass('selected');
+		});
+	});
 </script>
 
 
