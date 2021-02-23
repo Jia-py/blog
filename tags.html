@@ -63,7 +63,7 @@ header-img: ""
 				  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
 				  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
 				  </li> -->
-				 <div class="post-preview">
+				 <span class="post-preview">
 				    <a href="{{ post.url | prepend: site.baseurl }}">
 				        <h5 class="post-title">
                             {{ post.title }}
@@ -76,7 +76,7 @@ header-img: ""
 				        <!-- {% endif %} -->
 				    </a>
 				    <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p>
-				</div>
+				</span>
 				<!-- <hr> -->
 				{% endfor %}
 			</div>
