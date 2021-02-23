@@ -158,11 +158,13 @@
     $(function () {
 		$("button.button-show").on('click', function () {
 			$(this).parent().nextAll().addClass('selected');
+            $(this).parent().find('span').nextAll().slideDown("fast");
 		});
 	});
     $(function () {
 		$("button.button-hide").on('click', function () {
 			$(this).parent().nextAll().removeClass('selected');
+            $(this).parent().find('span').nextAll().slideUp("fast");
 		});
 	});
 </script>
