@@ -145,7 +145,7 @@
 		$("div.one-tag-list span").on('click', function () {
             if(!($(this).parent().hasClass('selected'))){
                 $(this).parent().addClass('selected');
-			    $(this).nextAll().slideDown(500);
+			    $(this).nextAll().show();
             }
 			else {
                 //$(this).parent().siblings().removeClass('selected').find('div').hide();
