@@ -141,17 +141,17 @@
 
 <!--tags折叠功能-->
 <script>
-	$(function () {
-		$("div.one-tag-list span span").on('click', function () {
-			//$(this).parent().siblings().removeClass('selected').find('div').hide();
-			$(this).parent().parent().addClass('selected');
-			$(this).parent().nextAll().slideDown(500);
-		});
-	});
     $(function () {
-		$("div.one-tag-list.selected span span").on('click', function () {
-			$(this).parent().parent().removeClass('selected').find('div').hide();
-			$(this).nextAll().slideUp(500);
+		$("div.one-tag-list span").on('click', function () {
+            if($(this).parent().hasClass(selected)){
+                $(this).parent().removeClass('selected').find('div').hide();
+			    $(this).nextAll().slideUp(500);
+            }
+			else {
+                //$(this).parent().siblings().removeClass('selected').find('div').hide();
+                $(this).parent().addClass('selected');
+			    $(this).nextAll().slideDown(500);
+            }
 		});
 	});
 </script>
