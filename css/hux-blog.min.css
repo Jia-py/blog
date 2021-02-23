@@ -2,10 +2,10 @@
 .one-tag-list.selected .post-preview{
     display:block;
 }
-.one-tag-list >span>div>div>.rotate-arrow{
+.one-tag-list img{
     height:34px;width:34px;margin-bottom:10px
 }
-.one-tag-list.selected .rotate-arrow{
+.one-tag-list.selected img{
     -ms-transform:rotate(90deg); /* IE 9 */
 	-webkit-transform:rotate(90deg); /* Safari and Chrome */
     transform: rotate(90deg);
