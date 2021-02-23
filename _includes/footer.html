@@ -146,10 +146,12 @@
             if($(this).parent().hasClass('selected')){
                 $(this).parent().removeClass('selected');
 			    $(this).nextAll().slideUp("fast");
+                $(this).children().children().find('img').css('transform','rotate(90deg)');
             }else {
                 //$(this).parent().siblings().removeClass('selected').find('div').hide();
                 $(this).parent().addClass('selected');
 			    $(this).nextAll().slideDown("fast");
+                $(this).children().children().find('img').css('transform','rotate(0deg)');
             }
 		});
 	});
