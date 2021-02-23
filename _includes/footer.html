@@ -143,14 +143,14 @@
 <script>
     $(function () {
 		$("div.one-tag-list span").on('click', function () {
-            if($(this).parent().hasClass(selected)){
-                $(this).parent().removeClass('selected').find('div').hide();
-			    $(this).nextAll().slideUp(500);
+            if(!($(this).parent().hasClass(selected))){
+                $(this).parent().addClass('selected');
+			    $(this).nextAll().slideDown(500);
             }
 			else {
                 //$(this).parent().siblings().removeClass('selected').find('div').hide();
-                $(this).parent().addClass('selected');
-			    $(this).nextAll().slideDown(500);
+                $(this).parent().removeClass('selected').find('div').hide();
+			    $(this).nextAll().slideUp(500);
             }
 		});
 	});
