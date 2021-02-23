@@ -2,7 +2,7 @@
 .one-tag-list.selected .post-preview{
     display:block;
 }
-div.one-tag-list .rotate-arrow{
+div.one-tag-list >span>div>div>.rotate-arrow{
     height:34px;width:34px;margin-bottom:10px
 }
 div.one-tag-list.selected .rotate-arrow{
