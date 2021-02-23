@@ -143,14 +143,14 @@
 <script>
     $(function () {
 		$("div.one-tag-list span").on('click', function () {
-            if(!($(this).parent().hasClass('selected'))){
-                $(this).parent().addClass('selected');
-			    $(this).nextAll().slideDown("fast");
+            if(($(this).parent().hasClass('selected'))){
+                $(this).parent().removeClass('selected');
+			    $(this).nextAll().slideUp("fast");
             }
 			else {
                 //$(this).parent().siblings().removeClass('selected').find('div').hide();
-                $(this).parent().removeClass('selected');
-			    $(this).nextAll().slideUp("fast");
+                $(this).parent().addClass('selected');
+			    $(this).nextAll().slideDown("fast");
             }
 		});
 	});

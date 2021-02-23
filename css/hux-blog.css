@@ -913,15 +913,6 @@ body {
 .one-tag-list.selected .post-preview{
   display:block;
 }
-.one-tag-list img{
-  height:34px;width:34px;margin-bottom:10px;
-}
-.one-tag-list.selected img{
-  -ms-transform:rotate(90deg); /* IE 9 */
--webkit-transform:rotate(90deg); /* Safari and Chrome */
-  transform: rotate(90deg);
-  animation-duration:100ms;
-}
 .one-tag-list .post-preview > a .post-title {
   font-size: 16px;
   font-weight: 500;
