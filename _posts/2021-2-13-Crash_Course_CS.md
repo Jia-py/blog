@@ -14,7 +14,7 @@ tags:
 
 
 
-## 计算机早期历史-Early Computing
+## 1.计算机早期历史-Early Computing
 
 人类在很早就拥有了计算的需求，计算机最早的形式是算盘，用珠子来表示不同的数字，不同行代表不同的位数。
 
@@ -26,7 +26,7 @@ tags:
 
 美国1890年的人口普查的需求，按照以往的方法，需要13年才能完成，但人口普查10年必须进行一次，这极大推动了计算机的发明。
 
-## 电子计算机-Electronic Computing
+## 2.电子计算机-Electronic Computing
 
 20世纪，战争、科研、探月等都带来了巨大的数据，需要更多自动化、更强的计算能力。
 
@@ -34,7 +34,7 @@ tags:
 * 真空管的发明，一秒钟可以实现近千次开关。
 * 晶体管，每秒开关10000次。由半导体控制电流是否流通。
 
-## 布尔逻辑和逻辑门-Boolean Logic & Logic Gates
+## 3.布尔逻辑和逻辑门-Boolean Logic & Logic Gates
 
 计算机使用二进制，Boolean值可以很容易地用二极管来表示，布尔运算AND,OR,NOT也可以用不同的电路来完成。
 
@@ -54,7 +54,7 @@ Not门是AND和OR的基础，当Current为通电状态，Input为true时，因�
 
 [![ysuERS.md.jpg](https://s3.ax1x.com/2021/02/13/ysuERS.md.jpg)](https://imgchr.com/i/ysuERS)
 
-## 二进制-Representing Numbers and Letters with Binary
+## 4.二进制-Representing Numbers and Letters with Binary
 
 二进制是怎么表示的
 
@@ -66,7 +66,7 @@ Not门是AND和OR的基础，当Current为通电状态，Input为true时，因�
 * 如何表示浮点数？ 首位依旧表示正负，接下的8位用来表示10的指数次方，其余的位数代表有效数字。这种表示其实是科学计数法。
 * 如何表示文字呢？ 上世纪60年代，美国发明了`ASCII`，是一个7位的码，可以保存128个不同的字符，因此足以保存大小写英文字母以及标点符号。但对于中国和日本来说，即使8位的码也很难表示所有的文字，所以会采用多字节的方式来显示文字，但往往伴随着乱码的问题。`1992`年，`unicode`横空出世，设计了统一的规则。最常见的Unicode是16位的，可以存放一百多万个字符。100多种语言所有字母表加起来占了12万个位置，还有很多空余，甚至可以放得下emoji表情。
 
-## 算术逻辑单元-How Computers Calculate-the ALU
+## 5.算术逻辑单元-How Computers Calculate-the ALU
 
 ALU是计算单元，全称为`Arithmetic Logic Unit`
 
@@ -102,7 +102,7 @@ ALU是计算单元，全称为`Arithmetic Logic Unit`
 
 
 
-## 寄存器和内存-Registers and RAM
+## 6.寄存器和内存-Registers and RAM
 
 
 一位的存储器：
@@ -135,7 +135,7 @@ ALU是计算单元，全称为`Arithmetic Logic Unit`
 
 于是，新的RAM拥有256个地址，每个地址存储着一个8位值。
 
-## 中央处理器（CPU)
+## 7.中央处理器（CPU)
 
 **CPU这几集建议还是多过几遍视频，不太容易记住**
 
@@ -151,7 +151,7 @@ CPU组成：
 
 CPU“取指令-解码-执行”的速度称为”时钟速度“，单位为赫兹。
 
-## 指令和程序-Instructions & programs
+## 8.指令和程序-Instructions & programs
 
 CPU是可编程的，可以被软件所控制。
 
@@ -159,20 +159,20 @@ CPU是可编程的，可以被软件所控制。
 
 JUMP可以实现比如循环的功能，在执行完加法后，JUMP回到加法的内存地址，这样会再次实现一次加法。
 
- ## 高级CPU设计-Advanced CPU Design
+## 9.高级CPU设计-Advanced CPU Design
 
 缓存的引入，RAM一般不大，可能只有几kb几mb
 
 因为在RAM里面每次定位数据等都很耗时，所以可以在一次访问数据的时候就把RAM中的一批数据存放到CPU中。因为一般访问数据都是同时访问临近的几个地址的数据，所以这样的缓存能够实现一次RAM读取就能处理完这批数据。
 
-## 早期的编程方式-Early Programming
+## 10.早期的编程方式-Early Programming
 
 * 可编程纺织机
 * 纸用打孔来计数一旦撒倒了需要大量时间来整理
 * 面板编程
 * 所以早期的编程非常硬核，只有懂得底层的专家和爱好者才能编程。
 
-## 编程语言发展史-The First Programming Languages
+## 11.编程语言发展史-The First Programming Languages
 
 汇编器：将易读的语言转化为二进制，让机器能听懂
 
@@ -183,3 +183,20 @@ JUMP可以实现比如循环的功能，在执行完加法后，JUMP回到加法
 FORTRAN 早期编程语言，让编程速度提升了近20倍。
 
 COBOL 语言诞生，是美国各界希望能有一种统一标准的编程语言。
+
+## 12.编程原理-语句和函数-Programming Basics - Statements & Functions
+
+赋值语句 条件语句（if..else.. )  循环语句 for while   函数
+
+## 13.算法入门-Intro to Algorithms
+
+* 排序算法
+* 算法复杂度O( )
+* Dijkstra最短路径算法
+
+## 14.数据结构-Data Structure
+
+* 数组。会从内存中拿出一块地址，j[0]指向这块地址的第一条。
+* 字符串。其实也是一种数组。每个字符都存在一条地址里。
+* 矩阵。可以看作二维数组。
+* 链表。链表有很多节点，每个节点在内存中可以分散分布。
