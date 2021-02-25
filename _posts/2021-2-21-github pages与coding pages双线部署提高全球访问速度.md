@@ -62,10 +62,8 @@ github pages虽然部署非常方便，但有两个非常严重的问题。
 
 | 主机记录 | 记录类型 | 线路类型 | 记录值             |
 | -------- | -------- | -------- | ------------------ |
-| @        | A        | 境内     | coding pages的IP   |
-| @        | A        | 境外     | github pages的IP   |
-| www      | CNAME    | 境内     | coding pages的网址 |
-| www      | CNAME    | 境外     | github pages的网址 |
+| @        | CNAME    | 境内     | cdn链接            |
+| @        | CNAME    | 境外     | github pages的网址 |
 
 > @代表的是域名无前缀直接访问，如XXX.com；www则代表带www前缀访问。同时还有*，代表其他所有前缀访问。mail，为mail.XXX.com访问。
 >
@@ -81,7 +79,26 @@ github pages虽然部署非常方便，但有两个非常严重的问题。
 
    至此，所有操作已经完成。
 
+3. 注意检查cdn加速区域
+4. 注意需要修改`_config.yml`文件中的baseurl为`baseurl: ""`，否则在coding自定义域名后会出现点击除主页外其他页`404 notfound`错误
+
 ## 后记
+
+这里简单比较一下结果
+
+单纯用github的节点：
+
+![](https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_2/Snipaste_2021-02-25_22-08-15.jpg)
+
+![](https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_2/纯github.jpg)
+
+境内使用cdn加速指向coding pages，境外指向github pages：
+
+![](https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_2/Snipaste_2021-02-25_22-06-33.jpg)
+
+![](https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_2/Snipaste_2021-02-25_22-09-15.jpg)
+
+可以看到效果非常明显！
 
 整个思考的流程花费了我大概一个下午，不断搜集资料，尝试配置。总之最终能想到也还是非常开心的一件事情！当然有更好的方式的朋友也非常欢迎留言！
 
