@@ -1,7 +1,7 @@
 ---
 
 layout:     post
-title:      "Tips"
+title:      "Jeckyll Markdown Tips"
 date:       2021-02-07 21:43:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
