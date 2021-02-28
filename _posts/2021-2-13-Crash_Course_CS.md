@@ -200,3 +200,22 @@ COBOL 语言诞生，是美国各界希望能有一种统一标准的编程语�
 * 字符串。其实也是一种数组。每个字符都存在一条地址里。
 * 矩阵。可以看作二维数组。
 * 链表。链表有很多节点，每个节点在内存中可以分散分布。
+
+## 15.阿兰图灵-Alan Turing
+
+father of computer science
+
+Turing machine : 图灵机。 如果有足够的纸带、状态、规则，可以计算任何东西。
+
+Turing complete：图灵完备。
+
+计算是有极限的，“停机问题”等等，有些问题是计算机不能解决的。
+
+## 16.软件工程 - Software Engineering
+
+OOP的概念，面向对象编程。
+
+不同团队之间需要调用其他团队的函数，所以需要API。
+
+## 17.集成电路&摩尔定理 - Integrated Circuits and Moore‘s Law
+
