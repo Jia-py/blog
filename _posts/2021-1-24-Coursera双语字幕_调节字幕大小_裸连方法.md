@@ -6,7 +6,6 @@ date:       2021-01-24 17:47:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
 tags:
-    - Study
     - Coursera
 ---
 

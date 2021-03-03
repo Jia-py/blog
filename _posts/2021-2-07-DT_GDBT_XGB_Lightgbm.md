@@ -6,7 +6,7 @@ date:       2021-02-07 21:19:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
 tags:
-    - Study
+    - CS
     - Machine Learning
 ---
 <head>

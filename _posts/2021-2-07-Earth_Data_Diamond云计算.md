@@ -7,7 +7,7 @@ date:       2021-02-07 17:33:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
 tags:
-    - Study
+    - Cloud
 ---
 
 ## 创建镜像文件
