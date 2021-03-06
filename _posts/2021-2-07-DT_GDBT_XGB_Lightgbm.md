@@ -183,7 +183,6 @@ $$
 ### XGBoost
 
 **XGBoost**是一种**集成树**模型，最终的预测结果是每棵树预测结果之和。  
-
 $$
 \hat{\mathrm{y}}_{i}=\phi\left(x_{i}\right)=\sum_{k=1}^{K} f_{k}\left(x_{i}\right), f_{k} \in \mathrm{F}
 $$

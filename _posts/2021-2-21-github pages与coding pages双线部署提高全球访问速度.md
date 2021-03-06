@@ -48,7 +48,7 @@ github pages虽然部署非常方便，但有两个非常严重的问题。
 
    这种方法配置也比较简单，还是很推荐的。
 
-   [![yTn0zD.md.jpg](https://s3.ax1x.com/2021/02/21/yTn0zD.md.jpg)](https://imgchr.com/i/yTn0zD)
+   ![](https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_3/yTn0zD.md.jpg)
 
    总体看来，提升的效果还是有的。
 

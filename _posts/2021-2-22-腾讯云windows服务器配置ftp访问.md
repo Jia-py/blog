@@ -16,7 +16,7 @@ tags:
 
 在这里我选择了FTP。
 
-## 配合过程
+## 配置过程
 
 * 云服务器端的配置服务主要参考[腾讯云文档](https://cloud.tencent.com/document/product/213/10414#.E6.9C.8D.E5.8A.A1.E5.99.A8.E8.AF.81.E4.B9.A6.E5.88.B6.E4.BD.9C.3Cspan-id.3D.22ssl.22.3E.3C.2Fspan.3E)
 
