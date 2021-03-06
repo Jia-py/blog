@@ -36,7 +36,7 @@ tags:
 
 则我们计算$\frac{1}{6}log_2m_A$只需要看作是1/6的6个等概率事件分布即可，即$\frac{1}{6}log_26$
 
-图中的分布计算得到的最终信息量为：$\frac{1}{6}log_26 + \frac{1}{6}log_26+\frac{1}{6}log_22+\frac{1}{6}log_26=1.792$
+图中的分布计算得到的最终信息量为：$\frac{1}{6}log_26 + \frac{1}{6}log_26+\frac{1}{2}log_22+\frac{1}{6}log_26=1.792$
 
 所以得出计算一般分布的信息量（熵）： $\Sigma p_{i} \log 2 p i^{-1}$ 
 
@@ -58,6 +58,8 @@ CART采用**二元切分**的方法
 
 **1. CART分类树**
 
+参考链接：https://blog.csdn.net/Subin_/article/details/99681866
+
 采用基尼系数(Gini index)衡量数据集的混乱程度，基尼系数越小说明数据不纯度（混乱程度）低，特征越显著。
 
 Single_Gini：  
@@ -74,8 +76,9 @@ $$
 \operatorname{Gini}(D, A)=\frac{\left|D_{1}\right|}{|D|} \operatorname{Gini}\left(D_{1}\right)+\frac{\left|D_{2}\right|}{|D|} \operatorname{Gini}\left(D_{2}\right)
 $$
 
+这里Gini(D1)指的是D1这一类再根据**所需预测的特征**的划分。
 
-根据各个特征的基尼指数，选择基尼指数最小的为分类特征。
+根据各个特征的基尼指数，选择基尼指数最小的为分类特征，将分类特征中的值分为两类，选取一类分支分出去。
 
 例子：[决策树的基尼系数计算过程](https://blog.csdn.net/qq_35540187/article/details/111729115)  
 
@@ -84,6 +87,18 @@ $$
 $$
 \frac{164}{297} \times\left(1-\left(\frac{37}{164}\right)^{2}-\left(\frac{127}{164}\right)^{2}\right)+\frac{133}{297}\left(1-\left(\frac{100}{133}\right)^{2}-\left(\frac{33}{133}\right)^{2}\right)
 $$
+
+---
+
+对离散分布、且取值数目>=3的特征的处理：
+
+正是因为CART树是二叉树，所以对于样本的有N>=3个取值的离散特征的处理时也只能有两个分支，这就要通过组合人为的创建二取值序列并取GiniGain最小者作为树分叉决策点。如某特征值具有[‘young’,’middle’,’old’]三个取值,那么二分序列会有如下3种可能性(空集和满集在CART分类中没有意义):
+[((‘young’,), (‘middle’, ‘old’)), ((‘middle’,), (‘young’, ‘old’)), ((‘old’,), (‘young’, ‘middle’))]
+采用CART算法，就需要分别计算按照上述List中的二分序列做分叉时的Gini指数，然后选取产生最小的GINIGain的二分序列做该特征的分叉二值序列参与树构建的递归。
+
+原文链接：https://blog.csdn.net/jiede1/article/details/76034328
+
+---
 
 **2. CART回归树**
 
@@ -128,7 +143,7 @@ ID3决策树只能用于**分类问题**
 
 下面为ID3进行一次分类的步骤：  
 
-* 计算初始熵Initial_entropy：$\Sigma p_{i} \log 2 p i^{-1}$，其中，$p_i$为不同类别的占比（概率）。  
+* 计算初始熵Initial_entropy：$\Sigma p_{i} \log 2 p i^{-1}$，其中，$p_i$为不同类别的占比（概率）。  **这里计算的是y(预测值)的熵**
 
 * 初始化信息增益 entropy_gain = 0  
 
@@ -176,11 +191,35 @@ $$
 | C4.5 | 分类       | 多叉树 | 信息增益比       | 支持   | 支持   | 支持   | 小样本 |
 | CART | 分类、回归 | 二叉树 | 基尼系数，方差和 | 支持   | 支持   | 支持   | 大样本 |
 
-### GBDT *梯度提升决策树*
+### GBDT 梯度提升决策树
 
-是一种Boosting(集成)算法
+参考链接：https://zhuanlan.zhihu.com/p/280222403
+
+是一种Boosting(集成)算法，集成学习分为两种。
+
+Bagging：个体学习器间不存在强依赖关系，可以同时生成的并行化方法。
+
+Boosting：个体学习器间存在强依赖关系，必须串行生成的序列化方法。
+
+提升树算法：
+
+![](https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_3/v2-fedb38d98fdc20eeaea35d966f085836_r.jpg)
+
+其实就是构建多棵CART决策树，构建好了一棵后，让下一棵树去拟合预测值与真实值之间的残差。最终达到规定的树的数量时，停止循环。
+
+计算预测值则是将每棵树的预测值相加即可。
+
+GBDT算法：**GBDT和提升树的区别就在于GBDT用负梯度来近似模拟残差，而提升树直接用的是真实值与预测值的差。**
+
+![https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_3/v2-52ac5f6a5418309fc519f9617d1681c1_r.jpg]()
+
+![https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_3/v2-d17d9e9982290288719f9433d58c7b0a_r.jpg]()
+
+如果损失函数是平方损失，则负梯度就是残差
 
 ### XGBoost
+
+参考链接：XGBoost的原理、公式推导、Python实现和应用 - 刘启林的文章 - 知乎 https://zhuanlan.zhihu.com/p/162001079
 
 **XGBoost**是一种**集成树**模型，最终的预测结果是每棵树预测结果之和。  
 $$
@@ -188,4 +227,12 @@ $$
 $$
 
 在这里$f_{k}\left(x_{i}\right)$是每一棵决策树，具体说是CART(Classification and regression tree)。
+
+XGBoost是对XGBT的优化，主要有以下几点：
+
+1. 利用二阶泰勒公式展开：优化损失函数，提高计算精确度
+2. 利用正则项：简化模型，避免过拟合
+3. 采用Blocks存储结构：可以并行计算等
+
+
 
