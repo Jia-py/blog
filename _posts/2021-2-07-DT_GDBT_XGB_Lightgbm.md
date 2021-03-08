@@ -213,9 +213,9 @@ Boosting：个体学习器间存在强依赖关系，必须串行生成的序列
 
 GBDT算法：**GBDT和提升树的区别就在于GBDT用负梯度来近似模拟残差，而提升树直接用的是真实值与预测值的差。**
 
-![https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_3/v2-52ac5f6a5418309fc519f9617d1681c1_r.jpg]()
+![](https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_3/v2-52ac5f6a5418309fc519f9617d1681c1_r.jpg)
 
-![https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_3/v2-d17d9e9982290288719f9433d58c7b0a_r.jpg]()
+![](https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_3/v2-d17d9e9982290288719f9433d58c7b0a_r.jpg)
 
 如果损失函数是平方损失，则负梯度就是残差
 
@@ -224,6 +224,7 @@ GBDT算法：**GBDT和提升树的区别就在于GBDT用负梯度来近似模拟
 参考链接：XGBoost的原理、公式推导、Python实现和应用 - 刘启林的文章 - 知乎 https://zhuanlan.zhihu.com/p/162001079
 
 **XGBoost**是一种**集成树**模型，最终的预测结果是每棵树预测结果之和。  
+
 $$
 \hat{\mathrm{y}}_{i}=\phi\left(x_{i}\right)=\sum_{k=1}^{K} f_{k}\left(x_{i}\right), f_{k} \in \mathrm{F}
 $$
