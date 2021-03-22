@@ -8,3 +8,9 @@ QTranslate：打开`自动删除换行符`
 
 Everything
 
+Dism++
+
+下载地址：[Dism++ | New Windows Utility (chuyu.me)](https://www.chuyu.me/en/index.html)
+
+
+
