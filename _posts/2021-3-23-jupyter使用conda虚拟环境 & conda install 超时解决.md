@@ -18,7 +18,20 @@ tags:
 
 1. 解决虚拟环境的问题。
 
-   简单粗暴的方法就是装conda插件`conda install nb_conda`即可，在jupyter notebook中选择kernel时选择你的虚拟环境就可以了。
+   * 简单粗暴的方法就是装conda插件`conda install nb_conda`即可，在jupyter notebook中选择kernel时选择你的虚拟环境就可以了。
+
+   * **比较好的方法**是如下
+
+   * ```python
+     #创建虚拟环境,pytorch为环境名
+     conda create -n pytorch python=3.7
+     #在该环境中安装ipykernel
+     conda install -n pytorch ipykernel
+     #添加kernel，第一个pytorch为环境名；第二个为在jupyter中显示的名字，可修改
+     python -m ipykernel install --user --name pytorch --display-name "pytorch"
+     ```
+
+     
 
 2. 解决conda install超时问题。
 
