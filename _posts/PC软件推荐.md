@@ -12,5 +12,13 @@ Dism++
 
 下载地址：[Dism++ | New Windows Utility (chuyu.me)](https://www.chuyu.me/en/index.html)
 
+Windows自带截图
+
+在任务栏中的搜索键入`截图和草图`，打开应用。在右上方的选项中找到设置，打开`保存`选项。也可在此处选择`使用PrtScn按键打开屏幕截图`
+
+Snipaste截图
+
+
+
 
 

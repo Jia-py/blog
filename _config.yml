@@ -24,7 +24,7 @@ github_username:    Jia-py
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 highlighter: rouge
 permalink: pretty
-paginate: 10
+paginate: 30
 #显示页码？
 #paginate_path: "page:num"
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
