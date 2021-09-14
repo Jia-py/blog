@@ -27,3 +27,28 @@ wind shear: will leads to sudden change of the wind direction to a helicopter. i
 
 **Nov 2 midterm exam**
 
+some conferences: ACM SIGKDD, IEEE ICDM, ACM CIKM
+
+KDD: Knowledge Discovery and Data mining, the discovery of knowledge( much human involvement)
+
+data mining: the discovery of patterns (mechanical, less human involvement)
+
+
+
+the simple process of summing, counting ... are not data mining. because data mining should **carry certain degree of predictive ability or descriptive ability**
+
+* prediction: predict future behavior from past behavior
+* description: summarize the underlying relationships in data and to describe the characteristics of data. (like the same features of cluster)
+
+
+
+**OLAP: On-Line Analytical Processing**
+
+allows users to view data in a data cube, selection, aggregation and summarization operations.
+
+**classification**
+
+**regression**
+
+**clustering**
+

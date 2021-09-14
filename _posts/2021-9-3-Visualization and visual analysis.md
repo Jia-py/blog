@@ -26,3 +26,21 @@ Why Visualization is important?
 
 Computer Vision 与 Computer Graphics difference? maybe the same as the difference between information and data?
 
+# Perception & Color
+
+what is perception? the process we interpret the world.
+
+try not to use too much conjunctions
+
+find a symbol with a line is easier than without a line.
+
+opponent color: black-white red-green yellow-blue
+
+**additive** color,RGB ;**subtractive** color, CMY
+
+for example, C(品红) in CMY can absorb Green and Blue, and reflect Red. 
+
+**Visit https://www.zhihu.com/question/22839343/answer/137530508**
+
+# Course Project
+
