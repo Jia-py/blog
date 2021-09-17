@@ -70,10 +70,10 @@ kramdown:
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: " GIS🌎 & CS⌨️ | Student🧑‍🎓 | ZJU📚 "
+sidebar-about-description: " GIS🌎 & CS⌨️ | Student🧑‍🎓 | ZJU & HKU📚 "
 sidebar-avatar: /img/avatar-JPY.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
-sidebar-email: "📧  jiapengyue@zju.edu.cn"
-sidebar-email1: "📧  pyjia@cs.hku.hk"
+sidebar-email: "📧jiapengyue@zju.edu.cn"
+sidebar-email1: "📧pyjia@cs.hku.hk"
 
 
 
