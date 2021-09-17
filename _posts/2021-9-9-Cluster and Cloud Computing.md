@@ -35,3 +35,20 @@ Cloud Deployment Models
 * Private Cloud: for exclusive use by a single organization of subscribers. more safe.
 * Community Cloud: e.g., cryptocurrency mining
 * Hybrid Cloud: e.g., private + public
+
+# Cloud Service Models
+
+* infrastructure as a service **Iaas**
+  * network virtualization
+  * 一个独立的主机，有独立的系统，a virtual machine
+* container as a service **Caas**
+  * 只是一个container，装一些软件，运行脚本
+* platform as a service **Paas**
+  * **deploy an entire application**
+  * 多是基于云的平台，用户只需要直接写代码就可以或写文字就可以。如印象笔记、spotify。
+* function as a service **Faas**
+  * **just deploy a single function**： 比如用户模糊手机中的图片，或旋转图片，都是一个function。
+  * event-driven: 比如事件为获取倒今天股市走势很糟糕，则运行代码发送伤心的表情。
+  * AWS Lambda: write your functions in python..., uploaded as a zip file
+* software as a service **SaaS**
+  * 给用户使用的软件，比如各种apps，云盘软件，云游戏

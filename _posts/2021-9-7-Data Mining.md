@@ -8,6 +8,8 @@ tags:
     - HKU CS
 ---
 
+by prof. Ben C.M. Kao
+
 # introduction
 
 google trends, a website can see the search trends of a few words.
