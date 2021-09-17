@@ -3,7 +3,6 @@ title: 我是憤怒
 SEOTitle: 我是憤怒
 header-img: img/home-bg.jpg
 email: jiapengyue@zju.edu.cn
-email1: pyjia@cs.hku.hk
 description: "weird ideas and study notes"
 keyword: ""
 url: "https://github.com/Jia-py"              # your host, for absolute URL
@@ -74,6 +73,7 @@ sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: " GIS🌎 & CS⌨️ | Student🧑‍🎓 | ZJU📚 "
 sidebar-avatar: /img/avatar-JPY.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 sidebar-email: "📧  jiapengyue@zju.edu.cn"
+sidebar-email1: "📧  pyjia@cs.hku.hk"
 
 
 
