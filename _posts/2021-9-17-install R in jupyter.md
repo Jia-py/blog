@@ -19,7 +19,7 @@ My environment
 
 # Process
 
-## method 1
+## method 1(recommended)
 
 1. install R
 
@@ -37,6 +37,8 @@ complete!
 
 ## method 2
 
+for I have not found a good way to use this R env in jupyter, the first method is recommended.
+
 process in miniconda directly
 
 ```
@@ -46,3 +48,6 @@ conda install r-base=4.1.1
 ```
 
 complete!
+
+conda安装R包有两种方式，一种是使用conda命令安装：conda install -c r package-name，需要注意的是conda下面的r包的名称与普通R包的名称不一样，具体名称可以在官网上面查询（http://docs.anaconda.com/anaconda/packages/r-language-pkg-docs/）；另外一种是直接进入conda下面的R交互界面，安装普通安装R包的方式进行安装，比如bioconductor或者install.packages方式。
+

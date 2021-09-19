@@ -72,3 +72,5 @@ $$
 $$
 **位置坐标旋转变化时，相对于local coordinate，是右乘R；相对于global coordinate，是左乘R。**
 
+**drop at 2021/9/16**
+

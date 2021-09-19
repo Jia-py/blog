@@ -42,5 +42,26 @@ for example, C(品红) in CMY can absorb Green and Blue, and reflect Red.
 
 **Visit https://www.zhihu.com/question/22839343/answer/137530508**
 
+stronger pre-attentive cues by text than by color
+
+color scales:
+
+* qualitative scalle: 不同类别的颜色
+* sequential scale: 单一颜色，不同深浅
+* diverging scale: two sequential scale
+
+color blindness
+
+* rule1: maintain sufficient value contrast
+* rule2: reinforce color encoding with position, size, shape
+
+# Temporal, Geospatial & Multivariate Data
+
+temporal data: set of values that change over time
+
+Dimension Reduction
+
+Dimension Ordering
+
 # Course Project
 
