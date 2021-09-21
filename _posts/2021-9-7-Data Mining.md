@@ -87,7 +87,7 @@ for example, term-frequency model (TF) , extract the number of words in one sent
 
 TF-IDF model: Term frequency of t * Inverse document frequency of t 
 $$
-T F(t) \times I D F(t)
+\begin{equation}T F(t) \times I D F(t)\end{equation}
 $$
 where
 $$
