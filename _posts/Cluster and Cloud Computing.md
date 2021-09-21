@@ -52,3 +52,11 @@ Cloud Deployment Models
   * AWS Lambda: write your functions in python..., uploaded as a zip file
 * software as a service **SaaS**
   * 给用户使用的软件，比如各种apps，云盘软件，云游戏
+
+# Problem Shooting
+
+* Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+  * maybe low version of apt-get or unstable internet make this mistake, run `sudo apt-get clean` and run `sudo apt-get update` and redownload it again with like `sudo apt-get -y install sysbench`
+* How to run the command in each terminal simultaneously?
+  * just use the function of xshell, use the tool-发送键输入到所有会话
+

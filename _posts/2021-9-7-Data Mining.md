@@ -8,6 +8,18 @@ tags:
     - HKU CS
 ---
 
+<head>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+            }
+        });
+    </script>
+</head>
+
 by prof. Ben C.M. Kao
 
 # introduction
@@ -54,3 +66,33 @@ allows users to view data in a data cube, selection, aggregation and summarizati
 
 **clustering**
 
+# Data
+
+types of Attributes
+
+* Binary: 0 or 1
+* Nominal: some thing that looks like number, but should be treated as name. Examples: ID number
+* Ordinal: just names, but human order these names. like grades {A,B,C,D}
+* Numerical: numbers that can take operations
+
+## Record
+
+tables/relations, these are structured data
+
+## Document data
+
+a term vector
+
+for example, term-frequency model (TF) , extract the number of words in one sentence, and take them as a vector.
+
+TF-IDF model: Term frequency of t * Inverse document frequency of t
+$$
+\begin{equation}T F(t) \times I D F(t)\end{equation}
+$$
+where
+$$
+\begin{equation}I D F(t)=\log \frac{|D|}{\left|D_{t}\right|}\end{equation}
+$$
+where D is the total number of documents in dataset, Dt is the number of documents containing t.
+
+if the t frequency is very big, so the IDF(t) will be very small, it says that elements that appear frequently are not important.
