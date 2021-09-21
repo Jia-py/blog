@@ -93,7 +93,7 @@ T F(t) \times I D F(t)
 \end{equation}
 $$
 
-where  $$ \begin{equation}I D F(t)=\log \frac{|D|}{\left|D_{t}\right|}\end{equation} $$
+where  $ \begin{equation}I D F(t)=\log \frac{|D|}{\left|D_{t}\right|}\end{equation} $
 
 where D is the total number of documents in dataset, Dt is the number of documents containing t.
 
