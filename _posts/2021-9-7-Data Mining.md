@@ -85,14 +85,15 @@ a term vector
 
 for example, term-frequency model (TF) , extract the number of words in one sentence, and take them as a vector.
 
-TF-IDF model: Term frequency of t * Inverse document frequency of t $I D F(t)=\log \frac{|D|}{\left|D_{t}\right|}$
+TF-IDF model: Term frequency of t * Inverse document frequency of t 
 $$
-\begin{equation}T F(t) \times I D F(t)\end{equation}
+T F(t) \times I D F(t)
 $$
 where
 $$
-\begin{equation}I D F(t)=\log \frac{|D|}{\left|D_{t}\right|}\end{equation}
+I D F(t)=\log \frac{|D|}{\left|D_{t}\right|}
 $$
 where D is the total number of documents in dataset, Dt is the number of documents containing t.
 
 if the t frequency is very big, so the IDF(t) will be very small, it says that elements that appear frequently are not important.
+
