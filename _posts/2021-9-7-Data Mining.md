@@ -88,7 +88,9 @@ for example, term-frequency model (TF) , extract the number of words in one sent
 TF-IDF model: Term frequency of t * Inverse document frequency of t 
 
 $$
-\begin{equation}T F(t) \times I D F(t)\end{equation}
+\begin{equation}
+T F(t) \times I D F(t)
+\end{equation}
 $$
 
 where
@@ -99,3 +101,8 @@ where D is the total number of documents in dataset, Dt is the number of documen
 
 if the t frequency is very big, so the IDF(t) will be very small, it says that elements that appear frequently are not important.
 
+## Set-valued Data
+
+each record is a set of items, like a market-basket data.
+
+one record is {"ID": 1 ,"items" : (Bread, Coke, Milk)}
