@@ -4,21 +4,11 @@ title:      "notebook - Data Mining"
 date:       2021-09-07 09:00:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
+latex: true
 tags:
     - HKU CS
 ---
 
-<head>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            inlineMath: [['$','$']]
-            }
-        });
-    </script>
-</head>
 
 by prof. Ben C.M. Kao
 
