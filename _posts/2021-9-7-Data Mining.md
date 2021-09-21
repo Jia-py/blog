@@ -95,7 +95,9 @@ $$
 
 where
 $$
+\begin{equation}
 I D F(t)=\log \frac{|D|}{\left|D_{t}\right|}
+\end{equation}
 $$
 where D is the total number of documents in dataset, Dt is the number of documents containing t.
 
@@ -111,3 +113,30 @@ one record is {"ID": 1 ,"items" : (Bread, Coke, Milk)}
 
 ## Graph Data
 
+how to calculate two nodes' similarity?
+
+1. personalized page rank: random walk, but start at a specific node
+
+## Ordered Data
+
+sequences of events
+
+spatiotemporal data: trajectory data, 根据时间点获取的GPS数据
+
+## how to detect outliers
+
+outliers are the data may be noise or right data.
+
+noise is incorrect data.
+
+we can use cluster analysis to detect outliers
+
+## Data Reduction and Transformation
+
+* Aggregation. 
+* Generalization. 
+  * reduce the cardinality of an attribute's domain. like the bucket analysis. to group data based on their values.
+  * rules: (1)more easily found (2) more concise (3) more interpretable
+* Sampling.
+  * because obtaining the entire set of data is too expensive
+  * because processing the entire set of data is too expensive
