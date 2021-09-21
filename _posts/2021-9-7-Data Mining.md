@@ -108,3 +108,8 @@ if the t frequency is very big, so the IDF(t) will be very small, it says that e
 each record is a set of items, like a market-basket data.
 
 one record is {"ID": 1 ,"items" : (Bread, Coke, Milk)}
+
+比如计算顾客拿了milk，又会拿Bread的概率。则是P(Bread,Milk) / P(Milk)
+
+## Graph Data
+
