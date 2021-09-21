@@ -85,7 +85,7 @@ a term vector
 
 for example, term-frequency model (TF) , extract the number of words in one sentence, and take them as a vector.
 
-TF-IDF model: Term frequency of t * Inverse document frequency of t
+TF-IDF model: Term frequency of t * Inverse document frequency of t $I D F(t)=\log \frac{|D|}{\left|D_{t}\right|}$
 $$
 \begin{equation}T F(t) \times I D F(t)\end{equation}
 $$
