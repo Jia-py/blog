@@ -130,3 +130,51 @@ we can use cluster analysis to detect outliers
 * Sampling.
   * because obtaining the entire set of data is too expensive
   * because processing the entire set of data is too expensive
+
+## Dimensionality Reduction
+
+Purpose:
+
+* Avoid curse of dimensionality
+* reduce amount of time and memory required by data mining algorithms
+* Less complex rules -- more interpretable
+
+Techniques:
+
+* Feature creation: new attributes are derived from existing attributes, e.g., weight/height^2 = BMI
+
+* Correlation analysis
+
+  * $$
+    \begin{equation}\operatorname{corr}(x, y)=\frac{\operatorname{coVariance}(x, y)}{s_{x} s_{y}}\end{equation}
+    $$
+
+    where
+    $$
+    \begin{equation}\operatorname{coVariance}(x, y)=\frac{1}{n-1} \sum_{k=1}^{n}\left(x_{k}-\bar{x}\right)\left(y_{k}-\bar{y}\right)\end{equation}
+    $$
+
+    $$
+    \begin{equation}s_{x}=\sqrt{\frac{1}{n-1} \sum_{k=1}^{n}\left(x_{k}-\bar{x}\right)^{2}}\end{equation}
+    $$
+
+    
+
+* Principal components analysis: capture enough data variability (at least 85%) on fewer dimensions
+
+* Feature selection
+
+# Classification
+
+Supervised Learning: training set (for train), validation set (for parameter tuning), test set (for testing the model)
+
+Entropy, this part we can look at my former post.
+
+[DT-GBDT-XGB-Lightgbm - 我是憤怒 (jiapy.space)](https://blog.jiapy.space/2021/02/07/DT_GDBT_XGB_Lightgbm/)
+
+larger entropy --> higher uncertainty
+
+**entropy's calculation, plz follow the PPT carefully, it's very important!**
+
+![](https://cdn.jsdelivr.net/gh/Jia-py/blog_picture/21_9/Snipaste_2021-09-28_11-08-27.png)
+

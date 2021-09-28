@@ -63,5 +63,13 @@ Dimension Reduction
 
 Dimension Ordering
 
+## Geospatial data
+
+map projection: must have distortions
+
+- Conformal: 等角的
+- Equal area:等面积
+- Equidistance:等距的
+
 # Course Project
 

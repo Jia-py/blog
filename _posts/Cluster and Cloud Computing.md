@@ -53,6 +53,20 @@ Cloud Deployment Models
 * software as a service **SaaS**
   * 给用户使用的软件，比如各种apps，云盘软件，云游戏
 
+# Hadoop
+
+File access model: read/ append only; most reads are sequential
+
+HDFS has two kinds of nodes. Name node, store metadata like names, block locations. Data nodes, store data.
+
+HDFS中的数据只能写入一次，不能修改。因为一旦修改，其他节点存储的该数据的复制项则失去了一致性。
+
+Heartbeats: default every 3s, data node sends heartbeats to name node to report its status.
+
+Block Reports: default every 6 hours, block report provide the name node with data location status.
+
+User can control which keys go to which reducer by implementing a custom Partitioner.
+
 # Problem Shooting
 
 * Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
