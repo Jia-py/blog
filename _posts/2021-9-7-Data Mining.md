@@ -93,6 +93,10 @@ where D is the total number of documents in dataset, Dt is the number of documen
 
 if the t frequency is very big, so the IDF(t) will be very small, it says that elements that appear frequently are not important.
 
+> 有很多不同的数学公式可以用来计算TF-IDF。这边的例子以上述的数学公式来计算。词频 (TF) 是一词语出现的次数除以该文件的总词语数。假如一篇文件的总词语数是100个，而词语“母牛”出现了3次，那么“母牛”一词在该文件中的词频就是3/100=0.03。一个计算文件频率 (IDF) 的方法是测定有多少份文件出现过“母牛”一词，然后除以文件集里包含的文件总数。所以，如果“母牛”一词在1,000份文件出现过，而文件总数是10,000,000份的话，其逆向文件频率就是 log(10,000,000 / 1,000)=4。最后的TF-IDF的分数为0.03 * 4=0.12。
+>
+> 引自https://blog.csdn.net/dongtest/article/details/84814042
+
 ## Set-valued Data
 
 each record is a set of items, like a market-basket data.
