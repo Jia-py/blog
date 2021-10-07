@@ -1,6 +1,7 @@
 ---
 layout:     post
 title:      "How to debug in python project, especially need to input args in terminal"
+subtitle:   "如何在需要使用命令行启动的python工程中debug"
 date:       2021-09-30 22:00:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
