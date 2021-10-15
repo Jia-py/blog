@@ -24,9 +24,10 @@ github_username:    Jia-py
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 highlighter: rouge
 permalink: pretty
-paginate: 30
+# 一页显示多少文章
+paginate: 10
 #显示页码？
-#paginate_path: "page:num"
+paginate_path: "page:num"
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
@@ -70,7 +71,7 @@ kramdown:
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: " GIS🌎 & CS⌨️ | Student🧑‍🎓 | ZJU & HKU📚 "
+sidebar-about-description: " GIS & CS | ZJU & HKU"
 sidebar-avatar: /img/avatar-JPY.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 sidebar-email: "📧  jiapengyue@zju.edu.cn"
 sidebar-email1: "📧  pyjia@cs.hku.hk"
