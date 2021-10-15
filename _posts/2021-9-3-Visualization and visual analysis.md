@@ -71,5 +71,30 @@ map projection: must have distortions
 - Equal area:等面积
 - Equidistance:等距的
 
+# Trees
+
+## graphs
+
+* degree = the number of edges incident to it = the number of neighboring vertices
+* adjacency matrix is O(n^2) space
+* there are two ways to represent a graph, adjacency list(1--> 2,3) and edge list(1,2,weight).
+
+## Trees
+
+directed acyclic graph
+
+In general, tree layout can be done efficiently in O(n) or O(nlogn) time
+
+* Problem of Node-Link Diagrams
+  * Tree breadth may grow exponentially
+  * easily run out of space
+* solution
+  * filtering, clustering, interactions, distortion
+
+Hyperbolic Layout
+
+* A distorted view of a tree so that the region in focus has more space for layout
+* 如果我们想获取到另一个地区比较准确的投影，那么要滑动原来的draw的点，其实其含义就是地理投影中有的要分区，不同的区使用不同的投影，不断转动地球，也就是滑动地区的意思。
+
 # Course Project
 
