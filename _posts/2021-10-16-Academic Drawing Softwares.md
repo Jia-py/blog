@@ -40,3 +40,6 @@ However, I have used `draw.io` for two months, it's a very good tool. If it solv
 
 However, though it supports export math equations in svg format, visio is not friendly to input math equations. You should use word get the correct format of math equations first, and paste it to visio as `a word document` format.
 
+where there is display error, please check  `文件-选项-高级-禁用增强元文件优化`
+
+![image-20211019202101829](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211019202101829.png)
