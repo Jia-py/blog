@@ -50,7 +50,7 @@ layout: default
                     {% comment %} if page.subtitle {% endcomment %}
                     <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
-                    <span class="meta">Posted on {{ page.date | date: "%B %-d, %Y" }} Updated on {{ page.updatedate | date: "%B %-d, %Y" }} by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} </span>
+                    <span class="meta">Posted on {{ page.date | date: "%B %-d, %Y" }}{% if post.updatedate%} Updated on {{ post.updatedate | date: "%B %-d, %Y" }}{% endif%} by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} </span>
                     <span class="meta"></span>
                     <!--不蒜子 文章访问次数-->
                     <br>

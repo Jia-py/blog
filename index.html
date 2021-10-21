@@ -53,7 +53,7 @@ header-img: "img/home-bg.jpg"
     </a>
     <p class="post-meta">
         Posted on {{ post.date | date: "%B %-d, %Y" }}
-        Updated on {{ post.updatedate | date: "%B %-d, %Y" }}
+        {% if post.updatedate%}Updated on {{ post.updatedate | date: "%B %-d, %Y" }}{% endif%}
         by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %}
     </p>
 </div>
@@ -83,7 +83,7 @@ header-img: "img/home-bg.jpg"
     </a>
     <p class="post-meta">
         Posted on {{ post.date | date: "%B %-d, %Y" }}
-        Updated on {{ post.updatedate | date: "%B %-d, %Y" }}
+        {% if post.updatedate%}Updated on {{ post.updatedate | date: "%B %-d, %Y" }}{% endif%}
         by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %}
     </p>
 </div>
