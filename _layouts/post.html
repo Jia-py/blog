@@ -50,7 +50,8 @@ layout: default
                     {% comment %} if page.subtitle {% endcomment %}
                     <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
-                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
+                    <span class="meta">Posted on {{ page.date | date: "%B %-d, %Y" }} Updated on {{ page.updatedate | date: "%B %-d, %Y" }} by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} </span>
+                    <span class="meta"></span>
                     <!--不蒜子 文章访问次数-->
                     <br>
                     <span class="meta" id="busuanzi_container_page_pv">

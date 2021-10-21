@@ -52,8 +52,9 @@ header-img: "img/home-bg.jpg"
         </div>
     </a>
     <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on
-        {{ post.date | date: "%B %-d, %Y" }}
+        Posted on {{ post.date | date: "%B %-d, %Y" }}
+        Updated on {{ post.updatedate | date: "%B %-d, %Y" }}
+        by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %}
     </p>
 </div>
 <hr>
@@ -81,8 +82,9 @@ header-img: "img/home-bg.jpg"
         </div>
     </a>
     <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on
-        {{ post.date | date: "%B %-d, %Y" }}
+        Posted on {{ post.date | date: "%B %-d, %Y" }}
+        Updated on {{ post.updatedate | date: "%B %-d, %Y" }}
+        by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %}
     </p>
 </div>
 <hr>
