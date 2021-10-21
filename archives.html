@@ -26,7 +26,7 @@ header-img: ""
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <!--这里的样式为了和tag.html一致，所以用了tag的样式-->
             <div class="one-tag-list">
-                
+                        <p>There are total {{ site.posts | size }} posts now.</p>
                     <!--时间线-->
                     <!-- <ul> -->
                     {% for post in site.posts %}
@@ -53,8 +53,3 @@ header-img: ""
         </div>
 	</div>
 </div>
-
-<script>
-    var n = site.posts.length
-    console.log(n)
-</script>
