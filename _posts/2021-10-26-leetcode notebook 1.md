@@ -5,7 +5,7 @@ subtitle:
 date:       2021-10-26 15:00:00
 updatedate:
 author:     "Jpy"
-header-img: "https://th.bing.com/th/id/R.d7d8b5a0c1be9005b4b000dd29bef530?rik=qdZkHLlkYgMC%2fg&pid=ImgRaw&r=0"
+header-img: "img/leetcode.png"
 no-catalog: False
 onTop: false
 latex: false
