@@ -24,8 +24,10 @@ tags:
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         # 哈希表，存储每个nums1中对应的返回值
+        
         res = {}   
         # 用于构建单调栈
+        # to build stack  
         stack = []   
         # 将nums2倒序遍历  
         for num in reversed(nums2): 
