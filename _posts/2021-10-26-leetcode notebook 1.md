@@ -14,20 +14,19 @@ tags:
     - LeetCode
 ---
 
-# 496. Next Greater Element I
-
-[496. 下一个更大元素 I - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/next-greater-element-i/)
+# [496. Next Greater Element I](https://leetcode-cn.com/problems/next-greater-element-i/)
 
 暴力解题时间复杂度太高，这里需引入`单调栈`与`哈希表`
 
 单调栈相当于是排序的栈，**哈希表**在python中可以用**字典**来实现<br>
 
 ```python
+
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         # 哈希表，存储每个nums1中对应的返回值
         res = {}   
-        # 用于构建单调栈
+        # 用于构建单调栈  
         stack = []   
         # 将nums2倒序遍历  
         for num in reversed(nums2): 
