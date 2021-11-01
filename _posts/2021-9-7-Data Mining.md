@@ -302,11 +302,13 @@ Accuracy = (TP+TN)/(TP+TN+FP+FN)
 
 Error rate = 1 - accuracy
 
-precision = TP/(TP+FP)
+when our target class is positive:
 
-recall = TP/(TP+FN)
+* precision = TP/(TP+FP)
 
-F measure = (2\*precision\*recall) / (precision + recall)
+* recall = TP/(TP+FN)
+
+* F measure = (2\*precision\*recall) / (precision + recall)
 
 ## Getting a (training set, test set) pair
 
