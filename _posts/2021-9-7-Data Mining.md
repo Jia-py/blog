@@ -225,14 +225,14 @@ fill in missing data; resolve inconsistency; remove noisy data
   
   where
   
-  $\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^{N}\left(x_{i}-\mu\right)^{2}}$
+  $$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^{N}\left(x_{i}-\mu\right)^{2}}$$
 
 ## Similarity and Dissimilarity
 
 Distance measures: 
 
-* Euclidean Distance: $\operatorname{dist}=\sqrt{\sum_{k=1}^{n}\left(p_{k}-q_{k}\right)^{2}}$  , k is the number of dimension.
-* Minkowski Distance:  $\operatorname{dist}=\left(\sum_{k=1}^{n}\left|p_{k}-q_{k}\right|^{r}\right)^{\frac{1}{r}}$  , r = 1, manhattan distance; r=2, euclidean distance
+* Euclidean Distance: $$\operatorname{dist}=\sqrt{\sum_{k=1}^{n}\left(p_{k}-q_{k}\right)^{2}}$$  , k is the number of dimension.
+* Minkowski Distance:  $$\operatorname{dist}=\left(\sum_{k=1}^{n}\left|p_{k}-q_{k}\right|^{r}\right)^{\frac{1}{r}}$$  , r = 1, manhattan distance; r=2, euclidean distance
 
 Metric: (1) d(p,q)>=0 (2) d(p,q) = d(q,p) (3) d(p,r) <= d(p,q) +d(q,r)
 
@@ -240,7 +240,7 @@ Similarity Between Binary Vectors:
 
 ![image-20211101144104738](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211101144104738.png)
 
-Cosine Similarity: $\cos \left(\mathrm{d}_{1}, \mathrm{d}_{2}\right)=\left(\mathrm{d}_{1} \bullet \mathrm{d}_{2}\right) /\left\|\mathrm{d}_{1}|| \mid \mathrm{d}_{2}\right\|$
+Cosine Similarity: $$\cos \left(\mathrm{d}_{1}, \mathrm{d}_{2}\right)=\left(\mathrm{d}_{1} \bullet \mathrm{d}_{2}\right) /\left\|\mathrm{d}_{1}|| \mid \mathrm{d}_{2}\right\|$$
 
 
 
@@ -281,15 +281,15 @@ Binary Decision
 ## Impurity measures
 
 * Entropy
-  * $Entropy(S)=\sum_{i} p_{i} \log _{2} \frac{1}{p_{i}}$
+  * $$Entropy(S)=\sum_{i} p_{i} \log _{2} \frac{1}{p_{i}}$$
   * disadvantage: tends to prefer splits that result in large number of partitions, each being small but pure.
 * Gini Index
-  * $G I N I(S)=1-\sum_{i}\left(p_{i}\right)^{2}$
+  * $$G I N I(S)=1-\sum_{i}\left(p_{i}\right)^{2}$$
 * Classification error
-  * $\operatorname{Error}(S)=1-\max _{i} P_{i}$
+  * $$\operatorname{Error}(S)=1-\max _{i} P_{i}$$
 * Gain Ratio
-  * $GainRATIO = GAIN/SplitINFO$
-  * $\operatorname{SplitINFO}=-\sum_{i=1}^{k} \frac{n_{i}}{n} \log _{2} \frac{n_{i}}{n}$
+  * $$GainRATIO = GAIN/SplitINFO$$
+  * $$\operatorname{SplitINFO}=-\sum_{i=1}^{k} \frac{n_{i}}{n} \log _{2} \frac{n_{i}}{n}$$
   * 其实很好理解，就是在决策树中单纯使用Entropy的优化版本。使用splitinfo计算分支的entropy，用这个来限制分支的数量，解决单纯使用Entropy的disadvantage。
 
 ## Accuracy metrics
@@ -313,7 +313,7 @@ F measure = (2\*precision\*recall) / (precision + recall)
 * Holdout: reserve like 80% for taining and use the rest for testing
 * Random subsampling: repeated holdout for k times, each with a different sample of the data as holdout. classifier's accuracy = average accuracy
 * Cross validation: Divide data into k partitions, run classifier by using k-1 partitions as training data. Repeat for all combinations and measure average accuracy.
-* Bootstrap:https://blog.csdn.net/Answer3664/article/details/100021968; 训练集是不断从原始数据集取数据，可能获得重复的数据样本。prob. an example is selected from dataset containing N samples, and we pick N times is $1-\left(1-\frac{1}{N}\right)^{N} \approx 1-\frac{1}{e}=0.632$
+* Bootstrap:https://blog.csdn.net/Answer3664/article/details/100021968; 训练集是不断从原始数据集取数据，可能获得重复的数据样本。prob. an example is selected from dataset containing N samples, and we pick N times is $$1-\left(1-\frac{1}{N}\right)^{N} \approx 1-\frac{1}{e}=0.632$$
 
 ## Generalization error
 
@@ -361,7 +361,7 @@ P(C 1 | X ) = P( X |C 1 ) * P(C 1 ) / P(X)
 
 ## SVM
 
-classify line: $\vec{w} \cdot \vec{x}+b=+1$
+classify line: $$\vec{w} \cdot \vec{x}+b=+1$$
 
 we want to max margin = 2/ ||$\vec{w}$||
 
@@ -394,17 +394,17 @@ sup({a,b,e}) = {a,b,e}这个item set出现的次数
 
 **Association Rules: X==>Y, If X occurs then Y is likely to occur**
 
-* support condition: $\sup (X \cup Y) / N \geq \rho_{s}$ (出现的频率不低)
-* confidence condition: $\sup (X \cup Y) / \sup(X) \geq \rho_{c}$ (X出现时，Y出现的概率不低)
+* support condition: $$\sup (X \cup Y) / N \geq \rho_{s}$$ (出现的频率不低)
+* confidence condition: $$\sup (X \cup Y) / \sup(X) \geq \rho_{c}$$ (X出现时，Y出现的概率不低)
 
 ## How to find the rules?
 
-1. find all frequent itemsets.  sup(S) >= N * $\rho_{s}$
-2. generate rules from frequent itemsets. 遍历所有可能的关联组合，但要注意分出的关联组合需要满足$X \cap Y=\emptyset ; X \cup Y=S$，检查关联组合是否满足$\sup (X \cup Y) / \sup(X) \geq \rho_{c}$ ，如果满足，则找到了一条关联rule。
+1. find all frequent itemsets.  sup(S) >= N * $$\rho_{s}$$
+2. generate rules from frequent itemsets. 遍历所有可能的关联组合，但要注意分出的关联组合需要满足$$X \cap Y=\emptyset ; X \cup Y=S$$，检查关联组合是否满足$$\sup (X \cup Y) / \sup(X) \geq \rho_{c}$$ ，如果满足，则找到了一条关联rule。
 
 ## Apriori Algorithm (帮助解决第一步, find frequent itemsets)
 
-If there are m different items in a dataset, then there are $2^m - 1$ possible non-empty itemsets, too time-consuming
+If there are m different items in a dataset, then there are $$2^m - 1$$ possible non-empty itemsets, too time-consuming
 
 **If X is a frequent itemset, then any non-empty subset of X is also frequent. Conversely, if an itemset X is not frequent, then any superset of X must not be frequent either.**
 
