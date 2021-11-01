@@ -240,7 +240,7 @@ Similarity Between Binary Vectors:
 
 ![image-20211101144104738](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211101144104738.png)
 
-Cosine Similarity: $$\cos \left(\mathrm{d}_{1}, \mathrm{d}_{2}\right)=\left(\mathrm{d}_{1} \bullet \mathrm{d}_{2}\right) /\left\|\mathrm{d}_{1}|| \mid \mathrm{d}_{2}\right\|$$
+Cosine Similarity: $$\cos \left(\mathrm{d}_{1}, \mathrm{d}_{2}\right)=\left(\mathrm{d}_{1} \bullet \mathrm{d}_{2}\right) /\left\|\mathrm{d}_{1}\| \| \mathrm{d}_{2}\right\|$$
 
 
 
