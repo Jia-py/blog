@@ -218,17 +218,11 @@ fill in missing data; resolve inconsistency; remove noisy data
 
 * Normalization: convert numerical numbers to a common range
 
-  * min-max:
+  * min-max:$x'=(x-min)/(max-min)$
 
-    $$
-    x'=(x-min)/(max-min)
-    $$
+  * z-score:$x^{\prime}=(x-\bar{X}) / \sigma_{X}$  
   
-  * z-score:
-
-	$x^{\prime}=(x-\bar{X}) / \sigma_{X}$  
-  
-    
+    where
   
     $\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^{N}\left(x_{i}-\mu\right)^{2}}$
 
