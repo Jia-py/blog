@@ -232,7 +232,7 @@ fill in missing data; resolve inconsistency; remove noisy data
 Distance measures: 
 
 * Euclidean Distance: $$\operatorname{dist}=\sqrt{\sum_{k=1}^{n}\left(p_{k}-q_{k}\right)^{2}}$$  , k is the number of dimension.
-* Minkowski Distance:  $$\operatorname{dist}=\left(\sum_{k=1}^{n}\left|p_{k}-q_{k}\right|^{r}\right)^{\frac{1}{r}}$$  , r = 1, manhattan distance; r=2, euclidean distance
+* Minkowski Distance:  $$\operatorname{dist}=\left(\sum_{k=1}^{n}\left\|p_{k}-q_{k}\right\|^{r}\right)^{\frac{1}{r}}$$  , r = 1, manhattan distance; r=2, euclidean distance
 
 Metric: (1) d(p,q)>=0 (2) d(p,q) = d(q,p) (3) d(p,r) <= d(p,q) +d(q,r)
 
@@ -344,11 +344,11 @@ perform poorly in high-dimensional spaces; feature selection is important
 
 ## Bayesian classifiers
 
-P(H|X)=P(H,X) / P(X)
+P(H\|X)=P(H,X) / P(X)
 
-P(C 1 | X ) = P( X |C 1 ) * P(C 1 ) / P(X)
+P(C 1 \| X ) = P( X \|C 1 ) * P(C 1 ) / P(X)
 
-我们在比较P(C1|X)与P(C2|X)时，只需要比较P(X|C1)\*P(C1)与P(X|C2)\*P(C2)的大小即可。
+我们在比较P(C1\|X)与P(C2\|X)时，只需要比较P(X\|C1)\*P(C1)与P(X\|C2)\*P(C2)的大小即可。
 
 ![image-20211101161641239](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211101161641239.png)
 
