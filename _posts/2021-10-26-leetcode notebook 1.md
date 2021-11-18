@@ -123,5 +123,46 @@ def bfs(start_node):
 	return distance[end_node]
 ```
 
+## 栈
 
+栈在leetcode解法里很多是直接使用了`list`，使用`list.append`与`list.pop()`即可实现栈的push与pop。
+
+想与队列的实现对应起来的话，也可以使用`collections.deque()`来实现。
+
+**单调栈**
+
+参考leetcode [739. 每日温度](https://leetcode-cn.com/problems/daily-temperatures/)
+
+在入栈之前，比较当前元素与栈顶元素的大小，把大于或小于（视情况而定）当前元素的栈顶元素`都`pop掉，再将当前元素入栈，即可获得单调栈。（需要注意的是很多单调栈的题，栈中存的是index）
+
+## DFS
+
+**DFS的模板可以直接修改BFS模板中的数据结构为栈来实现**，也可以直接调**递归**，用系统中的隐式栈来实现。最糟糕的情况下空间复杂度为O(h)，h为最深深度。
+
+递归：
+
+```python
+visited_nodes = [start_node]
+def dfs(node_cur, node_target, visited_nodes):
+    if node_cur == node_target: return true
+    for neighbor in node.get_neighbors():
+        if (neighbor not in visited_nodes):
+            visited_nodes.append(neighbor)
+            return true if dfs(neighbor, node_target, visited_nodes) == true
+```
+
+
+
+# 位运算
+
+python中的位运算只能用于`int`类型
+
+| 位运算符 | 说明     | 使用形式 | 举 例                            |
+| -------- | -------- | -------- | -------------------------------- |
+| &        | 按位与   | a & b    | 4 & 5                            |
+| \|       | 按位或   | a \| b   | 4 \| 5                           |
+| ^        | 按位异或 | a ^ b    | 4 ^ 5                            |
+| ~        | 按位取反 | ~a       | ~4                               |
+| <<       | 按位左移 | a << b   | 4 << 2，表示整数 4 按位左移 2 位 |
+| >>       | 按位右移 | a >> b   | 4 >> 2，表示整数 4 按位右移 2 位 |
 
