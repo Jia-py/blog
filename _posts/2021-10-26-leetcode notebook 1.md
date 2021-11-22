@@ -144,16 +144,116 @@ def bfs(start_node):
 ```python
 visited_nodes = [start_node]
 def dfs(node_cur, node_target, visited_nodes):
-    if node_cur == node_target: return true
+    if node_cur == node_target: return true or 0(如计算步长)
     for neighbor in node.get_neighbors():
         if (neighbor not in visited_nodes):
             visited_nodes.append(neighbor)
             return true if dfs(neighbor, node_target, visited_nodes) == true
+        	return 1 + dfs(neighbor, node_target, visited_nodes) (如计算步长)
+```
+
+# 树
+
+## 二叉树的遍历
+
+reference: [Link](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/python3-er-cha-shu-suo-you-bian-li-mo-ban-ji-zhi-s/) 
+
+### 递归
+
+简单，但有堆栈溢出的风险
+
+```python
+def recursion(self, root:TreeNode) -> List[int]:
+	if not root:
+        return []
+   	# 前序
+    return [root.val] + self.recursion(root.left) + self.recursion(root.right)
+	# 中序与后序只需要更换return中的顺序即可
+```
+
+通用版本
+
+```python
+def recursion(self, root:TreeNode) -> List[int]:
+    def dfs(cur):
+        if not cur:
+            return
+        # 前序递归
+        res.append(cur.val)
+        dfs(cur.left)
+        dfs(cur.right)
+        # 中序与后序只需要改变顺序
+    res = []
+    dfs(root)
+    return res
+```
+
+### 迭代
+
+前、中、后序通用模板（只需要一个栈的空间）
+
+```python
+def inorderTraversal(self, root:TreeNode) -> List[int]:
+    res = []
+    stack = []
+    # add one more variable to save the current_node
+    cur = root
+    # inorderTraversal, first find the node in the bottom left corner
+    # here use stack or cur, because stack will be empty when we move
+    # to the top of the tree
+    while stack or cur:
+        # if cur(the right children node) is None, move to the upper layer
+        while cur:
+            stack.append(cur)
+            cur = cur.left
+        cur = stack.pop()
+        res.append(cur.val)
+        cur = cur.right
+        # # 前序，相同模板
+        # while stack or cur:
+        #     while cur:
+        #         res.append(cur.val)
+        #         stack.append(cur)
+        #         cur = cur.left
+        #     cur = stack.pop()
+        #     cur = cur.right
+        # return res
+        
+        # # 后序，相同模板
+        # while stack or cur:
+        #     while cur:
+        #         res.append(cur.val)
+        #         stack.append(cur)
+        #         cur = cur.right
+        #     cur = stack.pop()
+        #     cur = cur.left
+        # return res[::-1]
+    return res
 ```
 
 
 
-# 位运算
+
+
+# 随机算法
+
+## Fisher-Yates洗牌算法
+
+给一个数组list，返回它的shuffle。思想很简单，返回的shuffle不能与原数组一样，将原数组的一项位置排除即可。
+
+```python
+def shuffle(lis) -> List[int]:
+        for i in range(len(lis)):
+            j = random.randrange(i, len(lis))
+            lis[i], lis[j] = lis[j], lis[i]
+        return lis
+```
+
+
+
+# Python
+
+## 位运算
 
 python中的位运算只能用于`int`类型
 
@@ -166,3 +266,51 @@ python中的位运算只能用于`int`类型
 | <<       | 按位左移 | a << b   | 4 << 2，表示整数 4 按位左移 2 位 |
 | >>       | 按位右移 | a >> b   | 4 >> 2，表示整数 4 按位右移 2 位 |
 
+## Zip
+
+zip函数可将可迭代的对象作为参数，将对象中对应元素打包成一个元组，然后返回由这些元组组成的列表。
+
+利用`*`号操作符，可以将元组解压为列表，即解压前的状态
+
+一些神奇的做法：
+
+* 创建字典：`stu = dict(zip(names, scores))`
+* 反向解压字符串列表：zip(*str)，可以用于判断最大相同前缀等
+
+```python
+str = ['flower','flight','flow']
+list(zip(*str))
+# output [('f', 'f', 'f'), ('l', 'l', 'l'), ('o', 'i', 'o'), ('w', 'g', 'w')]
+```
+
+## Collections library
+
+* collections.deque()
+* collections.Counter()
+  * 支持用字典、字符串、list进行初始化，相当于生成一个记录count的字典。
+  * 可以使用`sorted(counter)`对key值进行排序
+  * 支持使用`counter.most_common(n)`返回最多的前n个item
+
+## bisect library
+
+* bisect_left(list,value,lo=0,hi=None)
+
+  * 在列表list中搜索适合插入value的位置，但不会真正插入。当在list中出现value时，返回value左边位置的索引。lo为搜索的起始位置，默认为0。hi为搜索的结束位置，默认为len(a)。
+
+  * ```python
+    li = [1, 23, 45, 12, 23, 42, 54, 123, 14, 52, 3]
+    li.sort()
+    print(li)
+    print(bisect.bisect_left(li, 3))
+    # return
+    # [1, 3, 12, 14, 23, 23, 42, 45, 52, 54, 123]
+    # 1
+    ```
+
+* bisect_right(list,value,lo=0,hi=None)，同理。
+
+* insort_left(list, value, lo=0, hi=None)  insort_right(list, value, lo=0, hi=None). 在列表list中搜索适合插入value的位置，并真正插入。其他与bisect相同。
+
+## Random library
+
+* random.shuffle(list)  随机打乱一个数组，注意该操作没有返回值，只是打乱list。
