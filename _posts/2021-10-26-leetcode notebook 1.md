@@ -14,92 +14,9 @@ tags:
     - LeetCode
 ---
 
-[496. Next Greater Element I](https://leetcode-cn.com/problems/next-greater-element-i/)
-
-暴力解题时间复杂度太高，这里需引入`单调栈`与`哈希表`
-
-单调栈相当于是排序的栈，**哈希表**在python中可以用**字典**来实现<br>
-
-```python
-class Solution:
-    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        # 哈希表，存储每个nums1中对应的返回值
-        
-        res = {}   
-        # 用于构建单调栈
-        
-        stack = []   
-        # 将nums2倒序遍历  
-        
-        for num in reversed(nums2): 
-            # 若栈空或当前值大于栈顶的元素，则将栈顶的pop  
-            
-            while stack and num >= stack[-1]: 
-                stack.pop()
-            # 构建哈希，注意这里的num是nums2中的num，因为题目提到nums1的元素，nums2都有，所以可以提前构建哈希表，到时候直接遍历nums1读就行了
-            
-            res[num] = stack[-1] if stack else -1 
-            # 将当前数字加入单调栈
-            
-            stack.append(num) 
-        return [res[num] for num in nums1]
-```
-
-375. Guess Number Higher or Lower 2
-
-接触到的第一道动态规划题目，废了好多时间理解。
-
-精选题解：https://leetcode-cn.com/problems/guess-number-higher-or-lower-ii/solution/dong-tai-gui-hua-c-you-tu-jie-by-zhang-xiao-tong-2/
-
-# 队列 & 栈
+# 1. 队列 & 栈
 
 `python`的队列实现比较好的是用`collections.deque`实现，也可以使用列表简单实现，入队为list.append()，出队使用list.pop(0)。栈的简单实现也一样，入栈为list.append()，出栈为list.pop(-1)即可实现。
-
-## 循环队列
-
-即可以重复使用dequeue空出的空间的队列，拥有`head`与`tail`两个记录索引，在初始化时，`head`与`tail`均不指向数组内任何一个位置，可以初始化为-1，在dequeue队列中最后一个元素时，也需要再次将`head`与`tail`赋值为-1. [动画演示](https://leetcode-cn.com/leetbook/read/queue-stack/kgtj7/)
-
-[622. 设计循环队列 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/design-circular-queue/)
-
-```python
-class MyCircularQueue:
-    def __init__(self, k: int):
-        "initialize parameters"
-        self.length = k
-        self.queue = [None] * k
-        self.head = -1
-        self.tail = -1
-    def enQueue(self, value: int) -> bool:
-        if self.Empty():
-            self.queue[0] = value
-            self.head, self.tail = 0, 0
-            return True
-        elif self.isFull(): return False
-        else:
-            self.tail = (self.tail+1)%self.length
-            self.queue[self.tail] = value
-            return True
-    def deQueue(self) -> bool:
-        if self.isEmpty(): return False
-        elif self.head == self.tail:
-            self.head, self.tail = -1, -1
-            return True
-        else:
-            self.head = (self.head+1)%self.length
-            return True
-    def Front(self) -> int:
-        if self.isEmpty(): return -1
-        else: return self.queue[self.head]
-    def Rear(self) -> int:
-        if self.isEmpty(): return -1
-        else: return self.queue[self.tail]
-    def isEmpty(self) -> bool:
-        if self.head == -1 and self.tail == -1: return True
-        else: return False
-    def isFull(self) -> bool:
-        if (self.tail+1)%self.length == self.head: return True
-        else: return False
-```
 
 ## BFS
 
@@ -152,7 +69,7 @@ def dfs(node_cur, node_target, visited_nodes):
         	return 1 + dfs(neighbor, node_target, visited_nodes) (如计算步长)
 ```
 
-# 树
+# 2. 树
 
 ## 二叉树的遍历
 
@@ -233,9 +150,100 @@ def inorderTraversal(self, root:TreeNode) -> List[int]:
 
 
 
+# 3. 动态规划
+
+## 背包问题
+
+![416.分割等和子集1](https://img-blog.csdnimg.cn/20210117171307407.png)
+
+### 01背包
+
+参考链接：[代码随想录 - 背包问题](https://programmercarl.com/背包理论基础01背包-2.html#一维dp数组-滚动数组)
+
+**二维dp方法**
+
+dp\[i\]\[j\] 表示从下标为[0-i]的物品里任意取，放进容量为j的背包，价值总和最大是多少
+
+递推公式： $d p[i][j]=\max (d p[i-1][j], d p[i-1][j- weight [i]]+\operatorname{value}[i])$
+
+简而言之，是两种状态，一种为由i-1到i的过程，不拿第i个物品；一种为要拿第i个物品
+
+```python
+'外围两个循环的顺序可以更换，无所谓'
+for i in range(len(weight)):
+    for j in range(len(bagSize)):
+        '如果当前袋子装不下当前物品，直接用上一轮的结果'
+        if (j<weight[i]): dp[i][j] = dp[i-1][j];
+        else: dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i])
+```
+
+**一维dp方法**
+
+思想是和二维dp一样的，只不过遍历下一个物品时，直接将dp的值在上一层的数组上覆盖，这样就只需要一维数组了。
+
+递推公式：$\mathrm{d} p[\mathrm{j}]=\max (\mathrm{dp}[\mathrm{j}], \mathrm{dp}[\mathrm{j}- weight [\mathrm{i}]]+\operatorname{value}[\mathrm{i}])$
+
+简单理解，也是两种状态，一种为不取第i个物品;一种为取第i个物品
+
+```python
+'这里最好先遍历物品，再遍历bagsize'
+for i in range(len(weight)):
+    '这一行里直接把bagsize<weight[i]的情况去除了'
+    '这里一定得倒序遍历，正序遍历会使同一物品被使用多次'
+    for j in range(bagSize, weight[i] - 1, -1):
+        dp[i][j] = max(dp[j],dp[j-weight[i]] + value[i])
+```
+
+# 4. 搜索算法
+
+## 二分搜索
+
+基础写法
+
+```python
+def binary_search(nums, target):
+    if not nums: return -1
+    left, right = 0, len(nums) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+```
+
+这里采用的是最高级的写法，可以返回最后位置左右两个元素，以解决有些题目的需求
+
+```python
+def binary_search(nums, target):
+	if not nums: return -1
+    start, end = 0, len(nums) - 1
+    '使用start+1<end是为了防止死循环，如[1,1],1,同时，只有这样在下面的赋值时才可以将start与end直接赋值mid，否则应该参考简单写法'
+    while start + 1 < end:
+        mid = start + (end - start) // 2
+        if nums[mid] == target: return mid
+        elif nums[mid] < target: start = mid
+        else: end = mid
+    if nums[start] == target: return start
+    if nums[end] == target: return end
+    return -1
+```
+
+# 5. 并查集
+
+```python
+class UnionFind:
+	def __init__(self):
+        self.father = {} # key-节点,value-父节点
+        self.size_of_set 
+```
 
 
-# 随机算法
+
+# A. 随机算法
 
 ## Fisher-Yates洗牌算法
 
@@ -251,7 +259,34 @@ def shuffle(lis) -> List[int]:
 
 
 
-# Python
+# B. Python
+
+## 基础数据结构
+
+set 集合：集合是无序**不重复元素的序列，不支持索引**
+
+* 增：添加一个元素`set.add()`，添加多个元素`set.update(list or set)`
+
+* 删：`set.discard()`与`set.remove()`，但使用remove时元素本身不存在会报错。`set.clear()`清空集合
+
+* 集合运算
+
+  * 子集：
+
+    ```python
+    subset < set # return True or False
+    subset.issubset(set) # return True of False
+    ```
+
+  * 并集: `A|B` or `A.union(B)`
+
+  * 交集：`A&B` or `A.intersection(B)`
+
+  * 差集：`A-B` or `A.difference(B)`
+
+  * 对称差：只属于其中一个集合，不属于另一个集合的元素的集合。`A^B` or `A.symmetric_difference(B)`
+
+tuple 元组: 只能查看，不能增删改。元组的连接可以使用`+`
 
 ## 位运算
 
@@ -290,6 +325,7 @@ list(zip(*str))
   * 支持用字典、字符串、list进行初始化，相当于生成一个记录count的字典。
   * 可以使用`sorted(counter)`对key值进行排序
   * 支持使用`counter.most_common(n)`返回最多的前n个item
+  * counter是一个字典，其中的key是没有顺序的，两个不同的counter可以比较是否相同。
 
 ## bisect library
 

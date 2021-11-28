@@ -12,7 +12,7 @@ tags:
 
 data literacy : ability to convert data to information
 
-people can understand the image data parallelly
+people can understand the image data **parallelly**
 
 地理可变单元问题(高松老师之前提及过)，也是一个可视化问题
 
@@ -20,11 +20,16 @@ people can understand the image data parallelly
 
 Why Visualization is important?
 
-* comprehend huge amounts of data
+* **comprehend** huge amounts of data
 * new insight
-* reveal problems quickly
+* reveal problems quickly (**anomalies**)
+* facilitates hypothesis formation
+
+Lie factor: 图中表示长度、面积或其他表示数值的变化 / 实际数值的变化
 
 Computer Vision 与 Computer Graphics difference? maybe the same as the difference between information and data?
+
+--
 
 # Perception & Color
 
@@ -95,6 +100,4 @@ Hyperbolic Layout
 
 * A distorted view of a tree so that the region in focus has more space for layout
 * 如果我们想获取到另一个地区比较准确的投影，那么要滑动原来的draw的点，其实其含义就是地理投影中有的要分区，不同的区使用不同的投影，不断转动地球，也就是滑动地区的意思。
-
-# Course Project
 
