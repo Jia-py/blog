@@ -95,11 +95,11 @@ def recursion(self, root:TreeNode) -> List[int]:
     def dfs(cur):
         if not cur:
             return
-        # 前序递归
+        # 前序递归  
         res.append(cur.val)
         dfs(cur.left)
         dfs(cur.right)
-        # 中序与后序只需要改变顺序
+        # 中序与后序只需要改变顺序  
     res = []
     dfs(root)
     return res
@@ -113,11 +113,11 @@ def recursion(self, root:TreeNode) -> List[int]:
 def inorderTraversal(self, root:TreeNode) -> List[int]:
     res = []
     stack = []
-    # add one more variable to save the current_node
+    'add one more variable to save the current_node'
     cur = root
-    # inorderTraversal, first find the node in the bottom left corner
-    # here use stack or cur, because stack will be empty when we move
-    # to the top of the tree
+    '''inorderTraversal, first find the node in the bottom left corner
+    here use stack or cur, because stack will be empty when we move
+    to the top of the tree'''
     while stack or cur:
         # if cur(the right children node) is None, move to the upper layer
         while cur:
@@ -126,25 +126,27 @@ def inorderTraversal(self, root:TreeNode) -> List[int]:
         cur = stack.pop()
         res.append(cur.val)
         cur = cur.right
-        # # 前序，相同模板
-        # while stack or cur:
-        #     while cur:
-        #         res.append(cur.val)
-        #         stack.append(cur)
-        #         cur = cur.left
-        #     cur = stack.pop()
-        #     cur = cur.right
-        # return res
+        '''
+        # 前序，相同模板
+        while stack or cur:
+            while cur:
+                res.append(cur.val)
+                stack.append(cur)
+                cur = cur.left
+            cur = stack.pop()
+            cur = cur.right
+        return res
         
-        # # 后序，相同模板
-        # while stack or cur:
-        #     while cur:
-        #         res.append(cur.val)
-        #         stack.append(cur)
-        #         cur = cur.right
-        #     cur = stack.pop()
-        #     cur = cur.left
-        # return res[::-1]
+        # 后序，相同模板
+        while stack or cur:
+            while cur:
+                res.append(cur.val)
+                stack.append(cur)
+                cur = cur.right
+            cur = stack.pop()
+            cur = cur.left
+        return res[::-1]
+        '''
     return res
 ```
 
@@ -238,7 +240,7 @@ def binary_search(nums, target):
 class UnionFind:
 	def __init__(self):
         self.father = {} # key-节点,value-父节点
-        self.size_of_set 
+        self.size_of_set = {} # key-
 ```
 
 
