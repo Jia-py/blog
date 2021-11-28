@@ -2,7 +2,6 @@
 /* from http://stackoverflow.com/a/23393920 */
 
 .highlight pre code * {
-  //解决代码块中注释不换行的问题
   white-space: pre;    // this sets all children inside to nowrap
 }
 
