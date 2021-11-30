@@ -55,3 +55,13 @@ cdn加速访问github文件有默认的格式，可以先按照下面的格式�
 我原先访问主页背景慢的时候需要7秒左右，而现在还没有出现超过100ms的情况！
 
 jsDelivr🐂🍺！
+
+---
+
+## JsDelivr缓存更新
+
+2021.11.30 update
+
+在修改了css等文件后，若采用了jsdelivr加速，可能会存在更新不及时的问题。
+
+这是只需要访问几次url`https://purge.jsdelivr.net/gh/user/repo@version/file`即可，注意有时需多访问几次，直到一个`bottle**`的参数为True。

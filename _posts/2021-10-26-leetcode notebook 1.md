@@ -223,7 +223,7 @@ def binary_search(nums, target):
 def binary_search(nums, target):
 	if not nums: return -1
     start, end = 0, len(nums) - 1
-    '使用start+1<end是为了防止死循环，如[1,1],1,同时，只有这样在下面的赋值时才可以将start与end直接赋值mid，否则应该参考简单写法'
+    # 使用start+1<end是为了防止死循环，如[1,1],1,同时，只有这样在下面的赋值时才可以将start与end直接赋值mid，否则应该参考简单写法
     while start + 1 < end:
         mid = start + (end - start) // 2
         if nums[mid] == target: return mid
@@ -236,11 +236,46 @@ def binary_search(nums, target):
 
 # 5. 并查集
 
+此处代码模板采用了==路径压缩==的优化方法，没引入关于秩的优化。
+
 ```python
 class UnionFind:
 	def __init__(self):
         self.father = {} # key-节点,value-父节点
-        self.size_of_set = {} # key-
+        self.size_of_set = {} # key-父节点,value-size
+        self.num_of_set = 0
+    def add(self, x):
+        # 点如果已经存在，操作无效
+        if x in self.father: return
+        # 初始化点的父节点，点所在集合大小，另外使集合数量+1
+        self.father[x] = None
+        self.num_of_set += 1
+        self.size_of_set[x] = 1
+    def merge(self, x, y):
+        # 找到两个节点的根
+        root_x, root_y = self.find(x), self.find(y)
+        # 如果不是同一个根则连接
+        if root_x != root_y:
+            self.father[root_x] = root_y
+            self.num_of_set -= 1
+            self.size_of_set[root_y] += self.size_of_set[root_x]
+	def find(self, x):
+        root = x
+        while self.father[root] != None:
+            root = self.father[root]
+        # 优化步骤，将路径上所有点指向根节点root
+        while x != root:
+            original_father = self.father[x]
+            self.father[x] = root
+            x = original_father
+        return root
+    def is_connected(self, x, y):
+        return self.find(x) == self.find(y)
+    def get_num_of_set(self):
+        return self.num_of_set
+    def get_size_of_set(self, x):
+        return self.size_of_set[self.find(x)]
+   	
 ```
 
 
