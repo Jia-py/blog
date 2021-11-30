@@ -2,6 +2,7 @@
 layout:     post
 title:      "notebook - Visualization and visual analysis"
 date:       2021-09-03 19:00:00
+updatedate: 2021-11-30 19:00:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
 tags:
