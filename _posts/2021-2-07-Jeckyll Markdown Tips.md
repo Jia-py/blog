@@ -30,6 +30,7 @@ tags:
 ```
 2. 使用`<img src="https://www.zhihu.com/equation?tex=e^2 />"`
 3. 在markdown中调用`$ code $`即可
+3. 编辑时注意行内公式使用`$$ 内容 $$ `，行间公式请前后打上空行，typora默认不加空行
 
 # kramdown插入自动目录
 

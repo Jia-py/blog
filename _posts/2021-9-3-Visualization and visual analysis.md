@@ -252,10 +252,11 @@ Squarified Treemap 问题：一个数据集中的小改动会造成可视化的�
 
 ![image-20211130153617552](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211130153617552.png)
 
-**Page Rank**: Score of a page = the probability of being brought to a page after many clicks.
+**Page Rank**: Score of a page = the probability of being brought to a page after many clicks.  
 $$
 x(u)=p \sum_{v \in V} a_{v, u} \frac{x(v)}{L(v)}+\frac{1-p}{N}
 $$
+
 p: probability of following a link
 
 N: total number of nodes, 1-p / N = 随机跳到了这个网页的概率
