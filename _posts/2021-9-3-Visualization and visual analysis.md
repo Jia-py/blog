@@ -5,6 +5,7 @@ date:       2021-09-03 19:00:00
 updatedate: 2021-11-30 19:00:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
+latex:true
 tags:
     - HKU CS
 ---
@@ -76,6 +77,7 @@ color blindness 色盲
 * 2D Bar Charts: to show the joint distribution of the values of two variables.
 * Line Graphs: 折线图
 * Scatter Plots: 散点图 show the relationship between `two variables`
+* Scatter Plot Matrices
 * Contour Plots: 等高线图，用于绘制高程图，温度图，降雨图
 
 ## Time-Series Data
