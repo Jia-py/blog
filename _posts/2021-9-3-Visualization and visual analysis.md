@@ -240,7 +240,7 @@ Squarified Treemap 问题：一个数据集中的小改动会造成可视化的�
 
 **Degree**
 
-**Betweenness centrality**:  $$C(v)=\sum_{s, t \neq v \in V} \frac{\sigma_{s t}(v)}{\sigma_{s t}}$, $\sigma_{st}(v)$$ 代表node s与node t间的最短路径经过node v的数量，$\sigma_{st}$代表由node s到node t的所有最短路径数量。相当于计算节点之间的最短路径，通过v的占比，作为重要程度。
+**Betweenness centrality**:  $$C(v)=\sum_{s, t \neq v \in V} \frac{\sigma_{s t}(v)}{\sigma_{s t}}$$, $$\sigma_{st}(v)$$ 代表node s与node t间的最短路径经过node v的数量，$\sigma_{st}$代表由node s到node t的所有最短路径数量。相当于计算节点之间的最短路径，通过v的占比，作为重要程度。
 
 **Closeness Centrality**: $C(v)=\frac{1}{\sum_{u \neq v \in V} d(u, v)}$ ，1除以v到其他所有点的距离之和。==这里需要最短距离吗？==
 
@@ -299,8 +299,10 @@ $$
 
 $df_t$是document frequency of term t is defined as the number of documents that contain t.
 
-Inverse document frequency: $\mathrm{idf}_{t}=\log \left(N / \mathrm{df}_{t}\right)$
-
+Inverse document frequency: 
+$$
+\mathrm{idf}_{t}=\log \left(N / \mathrm{df}_{t}\right)
+$$
 可以将IDF当作term frequency的权重代入，得到了tf-idf公式
 $$
 \operatorname{tf-idf}_{t, d}=\log \left(1+t f_{t, d}\right) * \log \left(N / d f_{t}\right)
