@@ -69,6 +69,15 @@ def dfs(node_cur, node_target, visited_nodes):
         	return 1 + dfs(neighbor, node_target, visited_nodes) (如计算步长)
 ```
 
+## 优先队列
+
+```python
+import heapq
+q = []
+heapq.heappush(q,(1,'code'))
+node = heapq.heappop(q)
+```
+
 # 2. 树
 
 ## 二叉树的遍历
@@ -387,3 +396,47 @@ list(zip(*str))
 ## Random library
 
 * random.shuffle(list)  随机打乱一个数组，注意该操作没有返回值，只是打乱list。
+
+## Sorted
+
+```python
+sorted(iterable, cmp=None, key=None, reverse=False)
+```
+
+* 返回排序数组的原索引列表 
+
+```python
+index = sorted(range(len(list)),key=lambda k:list[k])
+```
+
+* 根据数组第几列sort
+
+
+```python
+sorted(list,key = lambda a:a[2])
+```
+
+## map()
+
+```python
+map(function, iterable, ...)
+```
+
+将function用于list中每个元素，返回一个迭代器
+
+```python
+# 将list每个元素取绝对值
+lis = list(map(abs,lis))
+# 平方
+lis = list(map(lambda x: x ** 2, lis))
+```
+
+## pow()
+
+```python
+# 返回a^b
+pow(a,b)
+# 返回(a^b)%c
+pow(a,b,c)
+```
+
