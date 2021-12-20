@@ -287,6 +287,89 @@ class UnionFind:
    	
 ```
 
+# 6. 字符串算法
+
+## KMP匹配子串算法
+
+用于找到字符串中`s`的连续子串`l`的下标
+
+相较于暴力解法，KMP可以在匹配到不相符的字符时跳过多格。
+
+```python
+class Solution:
+    # haystack为字符串,needle为待匹配的子串
+    def strStr(self, haystack: str, needle: str) -> int:
+        if needle == "":
+            return 0
+        def getNxt(x):
+            # 从长到短遍历
+            for i in range(x,0,-1):
+                if needle[0:i] == needle[x-i+1:x+1]:
+                    return i
+            return 0
+        nxt = [getNxt(x) for x in range(len(needle))]
+        tar = 0
+        pos = 0
+        while tar<len(haystack):
+            if haystack[tar] == needle[pos]:
+                tar+=1
+                pos+=1
+            elif pos:
+                pos = nxt[pos-1]
+            else:
+                tar += 1
+            if pos == len(needle):
+                return (tar-pos)
+                pos = nxt[pos-1]
+        return -1
+```
+
+# LIS 最长递增子序列算法
+
+这里的子序列可以是不连续的
+
+1. 动态规划O(N^2)
+
+```python
+def lengthOfLIS(self, nums: List[int]) -> int:
+    	# nums为数组list
+        if not nums:
+            return 0
+        n = len(nums)
+        # 初始化dp数组，dp[i]代表nums[0]到nums[i]中的最长递增子序列的长度
+        dp = [1] * n
+        # 递推方程为
+        # 在i>j的情况下，筛选出并且符合nums[i] > nums[j]的j
+        # 则dp[i] = max(dp[符合上述条件的j]) + 1 
+        for i in range(n):
+            for j in range(i):
+                if nums[i] > nums[j]:
+                    dp[i] = max(dp[i],dp[j] + 1)
+        return max(dp)
+```
+
+1. 贪心算法，二分查找O(NlogN)
+
+```python
+def lengthOfLIS(self, nums: List[int]) -> int:
+    	# 这里lis[i]为长度为i+1的子序列末尾元素的最小值
+        # 通过证明我们可以得知lis序列是严格递增的
+        lis = [nums[0]]
+        # 循环每个nums元素
+        for num in nums[1:]:
+            # 如果该元素大于lis中最后一个元素，说明最长子序列可以延长
+            '若题目要求非严格递增，则num>=lis[-1]，且使用bisect_right'
+            if num > lis[-1]:
+                lis.append(num)
+            # 否则说明不可以延长
+            # 找到lis中第一个大于num的元素，替换
+            # 这样我们优化了该长度下序列末尾的最小值
+            else:
+                lis[bisect.bisect_left(lis, num)] = num
+        # 最长非递减子序列的长度即为lis的长度
+        return len(lis)
+```
+
 
 
 # A. 随机算法
@@ -306,6 +389,14 @@ def shuffle(lis) -> List[int]:
 
 
 # B. Python
+
+## inf
+
+```python
+float('inf')
+float('-inf')
+int(1e9)
+```
 
 ## 基础数据结构
 
@@ -364,6 +455,12 @@ list(zip(*str))
 # output [('f', 'f', 'f'), ('l', 'l', 'l'), ('o', 'i', 'o'), ('w', 'g', 'w')]
 ```
 
+* 获取二维数组的一列
+
+```python
+col_maxes = [max(col) for col in zip(*two_D_list)]
+```
+
 ## Collections library
 
 * collections.deque()
@@ -377,7 +474,7 @@ list(zip(*str))
 
 * bisect_left(list,value,lo=0,hi=None)
 
-  * 在列表list中搜索适合插入value的位置，但不会真正插入。当在list中出现value时，返回value左边位置的索引。lo为搜索的起始位置，默认为0。hi为搜索的结束位置，默认为len(a)。
+  * 在列表list中搜索适合插入value的位置，但不会真正插入。当在list中出现value时，返回value左边==空缺==位置的索引。lo为搜索的起始位置，默认为0。hi为搜索的结束位置，默认为len(a)。
 
   * ```python
     li = [1, 23, 45, 12, 23, 42, 54, 123, 14, 52, 3]

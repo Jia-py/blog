@@ -148,7 +148,7 @@ spatiotemporal data: trajectory data, 根据时间点获取的GPS数据
 
 Noise in data occurs due to error in data collection
 
-Outliers are data that deviate so much from the norm. can be useful or not.
+Outliers are data that `deviate` so much from the norm. can be useful or not.
 
 Detecting Outliers: Cluster analysis
 
@@ -232,11 +232,13 @@ fill in missing data; resolve inconsistency; remove noisy data
 Distance measures: 
 
 * Euclidean Distance: $$\operatorname{dist}=\sqrt{\sum_{k=1}^{n}\left(p_{k}-q_{k}\right)^{2}}$$  , k is the number of dimension.
-* Minkowski Distance:  $$\operatorname{dist}=\left(\sum_{k=1}^{n}\left\|p_{k}-q_{k}\right\|^{r}\right)^{\frac{1}{r}}$$  , r = 1, manhattan distance; r=2, euclidean distance
+* Minkowski Distance:  $$\operatorname{dist}=\left(\sum_{k=1}^{n}\left\|p_{k}-q_{k}\right\|^{r}\right)^{\frac{1}{r}}$$  , r = 1, manhattan distance; r=2, euclidean distance; r -> $$\infty$$, supremum distance(返回某个维度上的最大difference)
 
 Metric: (1) d(p,q)>=0 (2) d(p,q) = d(q,p) (3) d(p,r) <= d(p,q) +d(q,r)
 
 Similarity Between Binary Vectors:
+
+SMC and Jaccard index
 
 ![image-20211101144104738](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211101144104738.png)
 
@@ -418,3 +420,228 @@ If there are m different items in a dataset, then there are $$2^m - 1$$ possible
 
 我们从小的itemsets到长度长的itemsets计算时有一个问题，我们只能保证X频率不高时，X的superset频率也不高。但不能保证，X频率高时，X的superset频率也高。因此，我们构建出X的superset后，要检验superset的全部的长度-1的子集是否为frequent，若有一个不是，则该superset也不是frequent set。
 
+## 优化Apriori
+
+### Transaction reduction
+
+If a transaction does not contribute any support to any candidate itemsets in C i , it will not contribute in the i +1 st iteration either. These transactions could be safely discarded after the i th iteration.
+
+### Sampling
+
+scan just part of the dataset. 
+
+### Hashing methods
+
+### Distributed algorithms
+
+---
+
+Maximal Frequent Itemset: (1) it is frequent and (2) none of its immediate supersets is frequent
+
+Closed Itemset: 所有的immediate supersets的出现次数都小于X的出现次数
+
+![image-20211219154525970](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219154525970.png)
+
+High-utility itemset
+
+![image-20211219155131703](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219155131703.png)
+
+![image-20211219155031395](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219155031395.png)
+
+# Chapter 7: Association Analysis 2
+
+## FP-Growth
+
+一种替代Apriori algorithm的方法
+
+A divide-and-conquer strategy, avoid candidate generation and subset testing
+
+steps:
+
+1. Scan DB once, find frequent 1 itemsets (single item patterns)
+2. Order frequent items in descending order of their frequency
+
+![image-20211219155500064](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219155500064.png)
+
+1. Scan DB again, construct FP tree. 相同的前缀merge建树
+
+<img src="https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219155621592.png" alt="image-20211219155621592" style="zoom:67%;" />
+
+---
+
+Mining Frequent Patterns Using FP-Tree
+
+Method: For each item, construct its `conditional pattern base` , and then its `conditional FP tree`. Repeat the process on each newly created conditional FP tree Until the resulting FP tree is empty, or it contains only one path (single path will generate all the combinations of its sub paths, each of which is a frequent pattern)
+
+![image-20211219160140190](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219160140190.png)
+
+![image-20211219160242754](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219160242754.png)
+
+| Item | Conditional pattern-base | Conditional FP-tree |
+| ---- | ------------------------ | ------------------- |
+| p    | {(fcam:2),(cb:1)}        | {(c:3)}\|p          |
+| m    | {(fca:2),(fcab:1)}       | {(f:3,c:3,a:3)}\|m  |
+
+advantages:
+
+* No candidate generation, no candidate test
+* Usually more efficient than Apriori, especially when there are many long patterns
+
+disadvantages:
+
+* for very large databases, tree may not fit in memory
+
+## Pattern Evaluation
+
+confidence: p(pattern) / N(T), 该pattern发生的概率
+
+statistical independence:
+
+<img src="https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219161506251.png" alt="image-20211219161506251" style="zoom:67%;" />
+$$
+\text { Lift }=\frac{P(Y \mid X)}{P(Y)}=\frac{P(X \wedge Y)}{P(X) P(Y)}
+$$
+Lift 为1说明两个是独立的，<1说明负相关，>1说明正相关
+
+## Quantitative Association Rules(QAR)
+
+值可能是连续值了，不再只有离散值。
+
+Mapping QAR to the binary model: 将连续值按照bucket的方式，分为离散值
+
+比如原feature只有Age, Income两个，mapping后为Age 20-24, Age 25-29, Income 2500-4000, Income 4000-6000多个feature
+
+Problems with mapping:
+
+1. The partitioning problem: The rules generated depend heavily on how the quantitative attributes are partitioned
+   * solution: avoid partitioning the intervals too fine or too coarse; merge the intervals
+2. The fragmented rules problem: Some of the rules generated can be combined to form more concise rules.
+   * solution: rules that share the same right hand side and having the same set of attributes on the left hand side, should be consider for possible merging.
+
+Dense-Region-Based Approach
+
+![image-20211219193942179](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219193942179.png)
+
+Denser region is more specific and significant. can use a density threshold to evaluate.
+
+## Sequence Data
+
+a sequence is an ordered list of transactions $$s = <t_1,t_2,t_3...>$$
+
+A k-sequence is a sequence that contains K items.
+
+Ex. of 3-sequences: <{a,b},{a}>, <{a,b,c}>,<{a}, {b}, {c}>
+
+sequence A contained in sequence B: A中的transactions都被B中的transactions所包括，A是B的Subsequence
+
+![image-20211219195053156](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219195053156.png)
+
+How many k subsequences can be extracted from a given n sequence? $$C_{n}^{k}$$
+
+Sequential Pattern Mining:
+
+![image-20211219201453677](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219201453677.png)
+
+Generalized Sequential Pattern GSP step:
+
+1. find all 1-item frequent sequences
+
+2. repeat util no new frequent sequences are found:
+
+   1. `candidate generation`: merge (k-1)st to generate k st. ex. 
+
+      ![image-20211219201859854](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219201859854.png)
+
+   2. `candidate pruning`: prune the k-sequences contains infrequent (k-1)-subsequences
+
+   3. `support Counting`: find the support for k-sequences
+
+# Clustering
+
+## Distance-based clustering
+
+k-means and k-medoid
+
+### Limitations of K-means
+
+Not effective when clusters are of different sizes, of different densities, Non-globular shapes; K-means are susceptible to noise and outliers.
+
+---
+
+evaluate K-means clusters
+$$
+S S E=\sum_{i=1}^{K} \sum_{x \in C_{i}} \operatorname{dist}^{2}\left(m_{i}, x\right)
+$$
+各点到其class's medoid距离平方之和
+
+how to select initial centroids: 1. multiple runs 2. select most widely seperated objects as initial centroids. 3. Bisecting K-means
+
+### Handling Empty Clusters
+
+Basic K-means can yield some empty clusters. we must find replacements for centroids of empty clusters
+
+solutions:
+
+1. choose the point that contributes most to SSE
+2. choose a point from the cluster with the highest SSE
+
+### Bisecting K-means
+
+优化了basic k-means会受到初始化centroid的影响
+
+step:
+
+1. 初始化所有点为一个聚类
+2. 重复
+   1. 取SSE最大的一个聚类，做多次k=2的k-means，取SSE最小，即效果最好的一次
+   2. 直到K=用户规定的数量，停止
+
+### Hierarchical Clustering
+
+dendrogram
+
+How to define Inter-cluster similarity
+
+1. MIN(两聚类点中最近距离)
+2. MAX(两聚类点中最远距离)
+3. Group Average(距离中各点与另一个聚类中各点的距离之和)
+4. Distance Between Centroids(distance of averages)
+
+### Cluster Similarity
+
+MIN or Single Link:
+
+![image-20211220140443468](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211220140443468.png)
+
+因为I1与I2合并后，其他点与其聚类的相似度应该取max((point,I1),(point,I2))，因为MIN的相似度是根据两聚类最近点来计算的。
+
+MAX or Complete Linkage:
+
+与MIN相反，需要选取min((point,I1),(point,I2)), 因为聚合后，某点与该聚类的最远点会是两点中的较远点，similarity值较小。
+
+Group Average:
+$$
+proximity(Cluster_i,Cluster_j)=\frac{\sum_{p_{i} \in \text { Cluster }_{i} \atop p_{j} \in \text { Cluster }_{j}} \text { proximity }\left(\mathbf{p}_{i}, \mathbf{p}_{j}\right)}{\mid \text { Cluster }_{i}|*| \text { Cluster }_{j} \mid}
+$$
+
+## Density-based clustering(DBSCAN)
+
+<img src="https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211220141413907.png" alt="image-20211220141413907" style="zoom:67%;" />
+
+首选任意选取一个点，然后找到到这个点距离小于等于 eps 的所有的点。如果距起始点的距离在 eps 之内的数据点个数小于 min_samples，那么这个点被标记为**噪声。**如果距离在 eps 之内的数据点个数大于 min_samples，则这个点被标记为**核心样本**，并被分配一个新的簇标签。
+
+然后访问该点的所有邻居（在距离 eps 以内）。如果它们还没有被分配一个簇，那么就将刚刚创建的新的簇标签分配给它们。如果它们是核心样本，那么就依次访问其邻居，以此类推。簇逐渐增大，直到在簇的 eps 距离内没有更多的核心样本为止。
+
+选取另一个尚未被访问过的点，并重复相同的过程
+
+## Measure of Clustering Quality
+
+SSE
+
+Cohesion (average intra-cluster distance)
+
+Separation (average inter-cluster distance)
+
+Silhouette Coefficient: combine Cohesion and Separation
+
+![image-20211220142604845](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211220142604845.png)

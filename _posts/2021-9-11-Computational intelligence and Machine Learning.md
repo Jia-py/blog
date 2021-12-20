@@ -69,8 +69,6 @@ Algorithms: Tree search algorithm(TSA) 基于state space tree, Graph search algo
 
 * BFS
 
-  * TSA-BFS可能会造成死循环，因为没有记录访问过的节点。GSA-BFS解决了这个问题。
-
   * completeness (Always find a solution if one exists): True. 即使某一个分支进入死循环，但其他分支还在正常搜索。
 
   * Optimal (Always find a least-cost solution): False
@@ -102,7 +100,7 @@ Greedy best-first search, A\* search
 * A\* TSA
   * 相当于USC+Greedy，在一个点时同时维护已走过的cost g(n)与距目标的距离h(n)
   * `f(n) = g(n) + h(n)`
-  * 但h(n)的设置就非常重要 `0<=h(n)<=h*(n)`，h\*(n) is the true cost to the nearest goal
+  * 但h(n)的设置就非常重要 `0<=h(n)<=h*(n)`，h\*(n) is the true cost to the nearest goal, h(n) is admissible
   * A* is optimal if an admissible heuristic is used
 * Consistency of Heuristic - h(n)
   * h(a) - h(c) <= cost( a to c )
@@ -111,7 +109,7 @@ Greedy best-first search, A\* search
 
 ![image-20211204152746271](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211204152746271.png)
 
-	## Local Search
+## Local Search
 
 evaluate and modify one current state rather than systematically explore paths from an initial state.
 
@@ -131,8 +129,10 @@ examples: 填色问题
 * Improving Backtracking
   * Forward checking(FC)
     * 维护一张表，存储每个domain还能存放的variables。从我的感觉来说，优化的是可以提前一步知道当前方案不行，不用再去填入具体颜色后判断相邻颜色相同才backtrack。`填入一个variable，将邻居中该variable删去。`
+    * ![image-20211207220849916](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211207220849916.png)
   * Constraint propagation(AC-3)
     * 维护一张表，存储每个domain还能存放的variables。但相比Forward checking，AC-3还会关注所有domain之间的constraints，提早筛选出不可能的variables删去，相当于又比forward checking提早了一步知道当前方案不行。`填入一个variable，把整张表扫一遍，把不可能的情况删去`
+    * ![image-20211207221007039](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211207221007039.png)
   * improving backtracking further
     * Minimum remaining values (MRV)
       * 优先选择剩余选项最少的domain
@@ -294,7 +294,7 @@ New to MDP: Don't know T(transition) or R(reward), i.e., we don't know what the 
 
 上图相当于一个introduction，这是一个简单的估算，从某个state出发能得到的最终收益。但这种做法存在问题，所以我们引入了sample。
 
-### 
+### Sample-Based Policy Evaluation
 
 $$
 \begin{aligned}
@@ -316,9 +316,11 @@ $$
 
 与direct evaluation的区别是每在$$\pi$$下进行一次sample，就马上更新，而不是进行一批samples再求平均。
 $$
-Sample of \mathrm{V}(\mathrm{s}): \quad sample =R\left(s, \pi(s), s^{\prime}\right)+\gamma V^{\pi}\left(s^{\prime}\right)  \\
-Update to \mathrm{V}(\mathrm{s}): \quad V^{\pi}(s) \leftarrow(1-\alpha) V^{\pi}(s)+(\alpha) sample  \\
-Same update: \quad V^{\pi}(s) \leftarrow V^{\pi}(s)+\alpha\left(\right. sample \left.-V^{\pi}(s)\right)
+\begin{aligned}
+\text Sample of \mathrm{V}(\mathrm{s}): \quad sample =R\left(s, \pi(s), s^{\prime}\right)+\gamma V^{\pi}\left(s^{\prime}\right)  \\
+\text Update to \mathrm{V}(\mathrm{s}): \quad V^{\pi}(s) \leftarrow(1-\alpha) V^{\pi}(s)+(\alpha) sample  \\
+\text Same update: \quad V^{\pi}(s) \leftarrow V^{\pi}(s)+\alpha\left(\right. sample \left.-V^{\pi}(s)\right)
+\end{aligned}
 $$
 
 ## Q-learning
@@ -367,7 +369,7 @@ Q(s, a)=w_{1} f_{1}(s, a)+w_{2} f_{2}(s, a)+\ldots+w_{n} f_{n}(s, a)
 $$
 ![image-20211205200540597](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211205200540597.png)
 
-![image-20211205201025403](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211205201025403.png)
+![image-20211207160140440](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211207160140440.png)
 
 # Perceptron & Adaline
 
@@ -440,7 +442,231 @@ $$
 
 # Logistic Regression, SVM, Decision Trees, KNN
 
+## Multiclass Classification
 
+OvA or One-versus-Reest(OvR): 
 
+Train one classifier per class, where the particular class is treated as the positive class .Samples from all other classes are considered negative classes
 
+If we were to classify a new data sample, we would use our n classifiers, and assign the class label with the highest confidence to the particular sample
 
+## Logistic Regression
+
+$$
+\begin{gathered}
+\phi(z)=\frac{1}{1+e^{-z}} \\
+\mathrm{z}=\boldsymbol{w}^{T} \boldsymbol{x}=w_{0} x_{0}+w_{1} x_{1}+\cdots+w_{m} x_{m}
+\end{gathered}
+$$
+
+the output of the sigmoid function is interpreted as the probability of belonging to class 1.
+
+here, we use the log-likelihood as the cost function.
+$$
+J(\boldsymbol{w})=\sum_{i=1}^{n}\left[-y^{(i)} \log \left(\phi\left(z^{(i)}\right)\right)-\left(1-y^{(i)}\right) \log \left(1-\phi\left(z^{(i)}\right)\right)\right]
+$$
+
+## Regularization
+
+L2 regularization: $$\frac{\lambda}{2}\|\boldsymbol{w}\|^{2}=\frac{\lambda}{2} \sum_{j=1}^{m} w_{j}^{2}$$
+
+相当于限制w，让w的绝对值不要过大，控制在一定的范围内。
+
+## Support Vector Machines
+
+an extension of the perceptron
+
+perceptron: minimized misclassification errors
+
+SVM: maximize margin
+
+width of the street: $$2/||w||$$
+
+所以我们可以等价于使$$||w||$$最小，得到损失函数$$\underset{\boldsymbol{w}}{\arg \min } \frac{1}{2}\|\boldsymbol{w}\|^{2}$$
+
+sensitive to **scaling**. 因为不同的scaling会使得两个变量的图像有所拉伸，从而改变了分割线。
+
+soft：可以分类错误，但要引入惩罚函数，对分错类的点进行惩罚。
+
+introduce Hinge Loss Function $$\max \left(0,1-\mathrm{y}^{(\mathrm{i})}\left(\boldsymbol{w}^{\mathrm{T}} \mathbf{x}^{(\mathrm{i})}+w_{0}\right)\right)$$
+
+带入损失函数得到
+$$
+\underset{\boldsymbol{w}, w_{0}}{\arg \min } \frac{1}{2}\|\mathbf{w}\|^{2}+C \sum_{i=1}^{n} \max \left(0,1-y^{(i)}\left(\mathbf{w}^{T} \mathbf{x}^{(i)}+w_{0}\right)\right)
+$$
+
+### Logistic Regression VS SVM
+
+logistic regression is simpler; logistic regression models can be easily updated, which is attractive when working with streaming data
+
+### Kernel SVM
+
+solve nonlinear classification problems
+
+2D -> 3D, 找到平面切分，再转回2D。
+
+Gaussian kernel ==unclear==
+
+![image-20211206174841464](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211206174841464.png)
+
+gamma是调整kernel的cut-off parameter for the Gaussian. 越大的Gamma，将会增加training samples的influence，从而获得tighter and bumpier decision boundary.
+
+## Decision Tree
+
+Split data on feature that results in largest Information Gain (IG)
+
+Gini Impurity: $$I_{G}(t)=\sum_{i=1}^{c} p(i \mid t)(1-p(i \mid t))=1-\sum_{i=1}^{c} p(i \mid t)^{2}$$
+
+Entropy: $$I_{H}(t)=-\sum_{i=1}^{c} p(i \mid t) \log _{2} p(i \mid t)$$
+
+Classification Error: $$I_{E}=1-\max \{p(i \mid t)\}$$, it is a useful criterion for pruning but not recommended for growing a DT, since it is less sensitive to changes in the class probabilities of the nodes.
+
+## Random Forests
+
+a more robust model than DT, has better generalization performance and is less susceptible to overfitting.
+
+### Bootstrap sample
+
+randomly choose n samples from the training set with replacement.
+
+不断使用bootstrap sample抽样，使用抽样的样本训练得到一棵决策树，重复。Aggregate the prediction by each tree to assign the class label by majority vote.
+
+抽样的n越大，模型越容易过拟合。因为不同的树会更相似，learn to fit the original training dataset more closely.
+
+## KNN
+
+The main advantage of such a memory-based approach is that the classifier immediately adapts as we collect new training data, but with a more computationally expensive prediction step
+
+Furthermore, we can't discard training samples since no training step is involved
+
+一般用Minkowski distance寻找最近邻居。
+$$
+d\left(\boldsymbol{x}^{(i)}, \boldsymbol{x}^{(j)}\right)=\sqrt[p]{\sum_{k}\left|x_{k}^{(i)}-x_{k}^{(j)}\right|^{p}}
+$$
+
+## Exercise
+
+1. If a Decision Tree is underfitting the training set, is it a good idea to try scaling the input features?==unclear==
+
+   Scaling the inputs don't matter because a decision tree's output is not affected by scaling or data being centered
+
+2. If it takes one hour to train a Decision Tree on a training set containing 1 million instances, roughly how much time will it take to train another Decision Tree on a training set containing 10 million instances?==unclear==
+
+   ![image-20211206190111411](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211206190111411.png)
+
+   **K = (n × 10m × log(10m)) / (n × m × log(m)) = 10 × log(10m) / log(m)**, m=10^6, K=11.7,so, 11.7 hours
+
+# Evaluation & Tuning
+
+## Holdout cross-validation
+
+origin training set is continuedly splited into training set and validation set.
+
+disadvantage: the performance estimate may be very sensitive to how we partition the training set into the training and validation subsets.
+
+## K-Fold Cross-Validation
+
+Randomly split the **training dataset** into k folds without replacement.
+
+**Leave-One-Out Cross-Validation**: a special case of k-fold cross-validation, set the number of folds equal to the number of training samples (k=n) so that only one training sample is used for testing each iteration. (recommended for very small datasets)
+
+## Learning and Validation Curve
+
+High bias: 欠拟合, learning curve与validation curve的accuracy都很小
+
+High variance: 过拟合, learning curve与validation curve的accuracy都很大
+
+## Hyperparameter Grid Search
+
+Grid Search, try all the combinations
+
+RandomizedSearchCV draws random parameter combinations from sampling distributions with a specified budget
+
+## Nested Cross-Validation
+
+因为cross-validation只会有一个test set，和一个固定的training set用于k折交叉验证，会有较大的误差。所以在原有的k折交叉验证的外层，针对训练集和测试集再套一个outer cross-validation，可以相对减小影响。
+
+![image-20211206232649436](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211206232649436.png)
+
+## Evaluation Metrics
+
+### F1 score
+
+Error = (FP + FN) / (FP + FN + TP + TN)
+
+Accuracy = (TP + TN) / (FP + FN + TP + TN)
+
+TPR = Recall = (TP) / (FN + TP)
+
+FPR  = FP / (FP + TN)
+
+Precision = TP / (TP + FP)
+
+Specificity = TN / (TN + FP)
+
+Sensitivity = TP / (TP + FN)
+
+F1 = (2 \* Precision \* Recall) / (Precision + Recall)
+
+### ROC
+
+Computed by shifting the decision threshold of the classifier.
+
+横坐标为FPR，纵坐标为TPR
+
+## Dealing with Class Imbalance
+
+1. for the decision rule is likely going to be biased towards the majority class, we can deal with imbalanced class proportions during model fitting is to assign a `larger` penalty to wrong predictions on the `minority class`.
+2. upsampling the minority class or downsampling the majority class
+
+# Ensemble Learning
+
+Majority voting: binary class, 50% threshold
+
+Plurality Voting: multi-class, select the class label received the most votes.
+
+Does an enemble method work better than an individual classifier? Depends on individual error, 大于或小于50%. classifiers越多，则效果会更差or更好。
+
+若单个分类器的error为$$\varepsilon$$，则ensemble的error为：
+$$
+P(y \geq k)=\sum_{k}^{n}\left\langle\begin{array}{l}
+n \\
+k
+\end{array}\right\rangle \varepsilon^{k}(1-\varepsilon)^{n-k}=\varepsilon_{\text {ensemble }}
+$$
+
+## Voting
+
+hard voting: 各个分类器给出的是label，将label加权求和，找到权重最高的label
+
+soft voting: 各个分类器给出的是各label的probability，将这些probability加权求和，找到权重最高的label。
+
+## Bagging
+
+as known as `bootstrap aggregating`
+
+to reduce overfitting by drawing random combinations of the training set with repetition
+
+![image-20211207142029558](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211207142029558.png)
+
+bagging is suitable for complex classification tasks and a dataset's high dimensionality can often lead to overfitting in a single decision tree.
+
+能降低variance of a model, so we want to perform bagging on an ensemble of classifiers with low `bias.`
+
+but if models are too simple to capture the trend in the data, bagging is ineffective.
+
+## Boosting
+
+### AdaBoost
+
+AdaBoost uses the complete training set to train the weak learners where the training samples are reweighted in each iteration to build a strong classifier that learns from the mistakes of the previous weak learners in the ensemble
+
+将前一个分类器分类错误的样本在后面的分类器中再次训练。
+
+![image-20211207145338942](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211207145338942.png)
+
+图4是我们通过对前三个分类器加权获得的最终分类器。
+
+![image-20211207145939576](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211207145939576.png)
+
+reduce the bias, introduce additional variance

@@ -27,6 +27,10 @@ Why Visualization is important?
 * reveal problems quickly (**anomalies**)
 * facilitates hypothesis formation
 
+## Graphic Distortion
+
+A graphic does not distort if the visual representation of the data is consistent with the numerical representation.
+
 Lie factor: （图中表示长度、面积或其他表示数值的变化） / 实际数值的变化
 
 Computer Vision 与 Computer Graphics difference? maybe the same as the difference between information and data?
@@ -180,7 +184,7 @@ In general, tree layout can be done efficiently in O(n) or O(nlogn) time
 * Treemaps：递归地把区域割分为长方形的子区域
   * 优势：give a single overview of a tree; large or small nodes are easily identified
   * 问题：difficult to perceive hierarchical structure, 难以察觉层级关系
-  * 解决方法：使用边框分隔不同节点，多使用长方形而不是正方形。
+  * 解决方法：使用边框分隔不同节点,padding and shading，多使用长方形而不是正方形。
 
 绘制Treemaps的方法 - Squarified Treemaps
 
@@ -210,9 +214,11 @@ Squarified Treemap 问题：一个数据集中的小改动会造成可视化的�
 
 1. Force Directed Layout (力引导布局)
 
-   1. attractive force: 胡克力，F = k\*x; repulsive force: 库仑力 F = -k\*q1\*q2/x^2
+   1. **edges = springs nodes = charged particles**
 
-   2. Fruchterman-Reingold Algorithm:
+   2. attractive force: 胡克力，F = k\*x; repulsive force: 库仑力 F = -k\*q1\*q2/x^2
+
+   3. Fruchterman-Reingold Algorithm:
 
       ![image-20211130141049867](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211130141049867.png)
 
