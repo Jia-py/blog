@@ -317,7 +317,7 @@ when our target class is positive:
 * Holdout: reserve like 80% for taining and use the rest for testing
 * Random subsampling: repeated holdout for k times, each with a different sample of the data as holdout. classifier's accuracy = average accuracy
 * Cross validation: Divide data into k partitions, run classifier by using k-1 partitions as training data. Repeat for all combinations and measure average accuracy.
-* Bootstrap:https://blog.csdn.net/Answer3664/article/details/100021968; 训练集是不断从原始数据集取数据，可能获得重复的数据样本。prob. an example is selected from dataset containing N samples, and we pick N times is $$1-\left(1-\frac{1}{N}\right)^{N} \approx 1-\frac{1}{e}=0.632$$
+* Bootstrap:https://blog.csdn.net/Answer3664/article/details/100021968; sample with replacement. 训练集是不断从原始数据集取数据，可能获得重复的数据样本。prob. an example is selected from dataset containing N samples, and we pick N times is $$1-\left(1-\frac{1}{N}\right)^{N} \approx 1-\frac{1}{e}=0.632$$
 
 ## Generalization error
 
@@ -438,7 +438,7 @@ scan just part of the dataset.
 
 Maximal Frequent Itemset: (1) it is frequent and (2) none of its immediate supersets is frequent
 
-Closed Itemset: 所有的immediate supersets的出现次数都小于X的出现次数
+Closed Itemset: 所有的immediate supersets的出现次数都不等于X的出现次数
 
 ![image-20211219154525970](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219154525970.png)
 
@@ -491,17 +491,25 @@ disadvantages:
 
 * for very large databases, tree may not fit in memory
 
-## Pattern Evaluation
+## Pattern Evaluation: Interestingness
+
+1. support
+2. confidence
 
 confidence: p(pattern) / N(T), 该pattern发生的概率
 
-statistical independence:
+3. statistical independence:
 
 <img src="https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211219161506251.png" alt="image-20211219161506251" style="zoom:67%;" />
+
+4. lift
+
 $$
 \text { Lift }=\frac{P(Y \mid X)}{P(Y)}=\frac{P(X \wedge Y)}{P(X) P(Y)}
 $$
-Lift 为1说明两个是独立的，<1说明负相关，>1说明正相关
+<img src="https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20211220152241611.png" alt="image-20211220152241611" style="zoom:67%;" />
+
+Lift 为1说明两个是独立的，<1说明负相关，>1说明正相关，=1说明独立
 
 ## Quantitative Association Rules(QAR)
 
@@ -597,6 +605,8 @@ step:
    2. 直到K=用户规定的数量，停止
 
 ### Hierarchical Clustering
+
+**Do not have to assume any particular number of clusters**
 
 dendrogram
 

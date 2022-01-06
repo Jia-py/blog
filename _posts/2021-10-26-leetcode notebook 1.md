@@ -74,7 +74,8 @@ def dfs(node_cur, node_target, visited_nodes):
 ```python
 import heapq
 q = []
-heapq.heappush(q,(1,'code'))
+heapq.heappush(q,(rank,'code'))
+# m
 node = heapq.heappop(q)
 ```
 
@@ -159,7 +160,44 @@ def inorderTraversal(self, root:TreeNode) -> List[int]:
     return res
 ```
 
+### 层序遍历 BFS
 
+推荐还是使用第一种方法，比较容易理解
+
+```python
+'第一种方法，通过维护每层的size值，得知何时停止bfs，得知每层的信息'
+def levelOrder(self,root:TreeNode):
+    result = []
+    if not root: return result
+    q = deque([root])
+    while q:
+        size = len(q)
+        level = [] # 存储该层的所有元素
+        while size > 0:
+            cur = q.popleft()
+            level.append(cur.val)
+            if cur.left: q.append(cur.left)
+            if cur.right: q.append(cur.right)
+            size -= 1
+        result.append(level)
+    return result
+
+'第二种方法，把下一层的元素单独存在新列表中，再将新列表赋值给q'
+def levelOrder(self,root:TreeNode):
+    result = []
+    if not root: return result
+    q = [root]
+    while q:
+        level = [] # 存储该层的所有元素的val
+        nxt = [] # 存储下一层的元素
+        for node in q:
+            level.append(node.val)
+            if cur.left: nxt.append(cur.left)
+            if cur.right: nxt.append(cur.right)
+        result.append(level)
+        q = nxt
+    return result
+```
 
 # 3. 动态规划
 
@@ -324,7 +362,7 @@ class Solution:
         return -1
 ```
 
-# LIS 最长递增子序列算法
+## LIS 最长递增子序列算法
 
 这里的子序列可以是不连续的
 
@@ -370,7 +408,46 @@ def lengthOfLIS(self, nums: List[int]) -> int:
         return len(lis)
 ```
 
+## Trie
 
+Trie有两种不同实现方法，不同点在于如何表示当前节点是否为结束字符。
+
+1. 每个节点维护一个end的变量，当当前节点为结束字符时`end==True`
+2. 在词后插入一个字符，比如`#,$`等等，不会在正常字符串中出现的字符作为结束字符。
+
+这里的模板采用的是第一种方式，较为普遍。
+
+```python
+class Trie:
+    def __init__(self):
+        # key为当前字符，value为以当前key为前缀的前缀树
+        self.child = dict()
+        # 当前节点是否为结束节点
+        self.isend = False
+    def insert(self,word):
+        rt = self
+        for w in word:
+            if w not in rt.child:
+                rt.child[w] = Trie()
+            rt = rt.child[w]
+        rt.isend = True
+    # 搜索树中是否有完整单词word
+    def search(self, word):
+        rt = self
+        for w in word:
+            if w not in rt.child:
+                return False
+            rt = rt.child[w]
+        return rt.isend == True
+    # 搜索树中是否有前缀prefix
+    def startsWith(self, prefix):
+        rt = self
+        for w in prefix:
+            if w not in rt.child:
+                return False
+            rt = rt.child[w]
+        return True
+```
 
 # A. 随机算法
 
@@ -535,5 +612,30 @@ lis = list(map(lambda x: x ** 2, lis))
 pow(a,b)
 # 返回(a^b)%c
 pow(a,b,c)
+```
+
+## datetime
+
+```python
+import datetime
+# 创建datetime对象
+x = datetime.datetime(year,month,day,hour,minute,second...)
+x = datetime.datetime.strptime('1999-04-21','%Y-%m-%d')
+# 个位数显示删去前置0，添加'#‘
+x = datetime.datetime.strptime(str,'%Y-%#m-%#d')
+# 日期加减
+now + datetime.timedelta(days=1)
+(datetime1-datetime2) .days .seconds # 并b
+# datetime转str,常用对象属性
+x.strftime('%A') # Weekday,e.g.,Wednesday
+x.strftime('%w') # weekday,e.g.,3
+x.strftime('%d') # day,e.g.,31
+x.strftime('%m') # month,e.g.,12
+x.strftime('%Y') # year,e.g.,2021
+x.strftime('%H') # hour,e.g.,23
+x.strftime('%M') # minute,e.g.,41
+x.strftime('%S') # second,e.g.,30
+x.strftime('%j') # 一年中的天数,365
+x.strftime('%W') # 第几周，每周第一天是周一
 ```
 
