@@ -14,6 +14,8 @@ tags:
     - LeetCode
 ---
 
+更新文档在[Leetcode Notebook - NoteBook (gitbook.io)](https://jia-pengyue.gitbook.io/notebook/algorithm/leetcode_notebook)
+
 # 1. 队列 & 栈
 
 `python`的队列实现比较好的是用`collections.deque`实现，也可以使用列表简单实现，入队为list.append()，出队使用list.pop(0)。栈的简单实现也一样，入栈为list.append()，出栈为list.pop(-1)即可实现。
@@ -200,6 +202,8 @@ def levelOrder(self,root:TreeNode):
 ```
 
 # 3. 动态规划
+
+环形数组问题一般可以分解为`[0:-1]`与`[1:]`两个子数组的问题，或者有环情况时，反向考虑中间的部分。
 
 ## 背包问题
 
@@ -502,6 +506,10 @@ set 集合：集合是无序**不重复元素的序列，不支持索引**
 
 tuple 元组: 只能查看，不能增删改。元组的连接可以使用`+`
 
+## ASCII
+
+`ord('a') == 97`
+
 ## 位运算
 
 python中的位运算只能用于`int`类型
@@ -514,6 +522,11 @@ python中的位运算只能用于`int`类型
 | ~        | 按位取反 | ~a       | ~4                               |
 | <<       | 按位左移 | a << b   | 4 << 2，表示整数 4 按位左移 2 位 |
 | >>       | 按位右移 | a >> b   | 4 >> 2，表示整数 4 按位右移 2 位 |
+
+经典位运算操作：
+
+1. 除以2 `number >> 1`
+2. 一个2^n^的数字与另一个[2^n-1^,2^n^)的数字求和，可以使用`number1 | number2`
 
 ## Zip
 
