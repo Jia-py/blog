@@ -28,9 +28,12 @@ tags:
      #在该环境中安装ipykernel
      conda install -n pytorch ipykernel
      #添加kernel，第一个pytorch为环境名；第二个为在jupyter中显示的名字，可修改
+     '''
+     请务必注意要先进入对应的虚拟环境，再运行下面的命令
+     '''
      python -m ipykernel install --user --name pytorch --display-name "pytorch"
      ```
-
+     
      
 
 2. 解决conda install超时问题。
