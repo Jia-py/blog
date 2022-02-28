@@ -105,3 +105,12 @@ solution：`pip install opencv-python`
 5. 模型训练时报错`BrokenPipeError: [Errno 32] Broken pipe `
 
 solution: 修改trainmodel中的参数worker_num = 0
+
+# TensorBoard
+
+```
+tb_writer.add_scalar('train_loss',loss,epoch)
+tb_writer.add_scalar('accuracy',acc,epoch)
+tb_writer.add_scalar('learning_rate',l,epoch)
+```
+
