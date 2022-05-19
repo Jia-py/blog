@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Install Pytorch"
-subtitle:   "A Preliminary Study of Deep Learning"
+title:      "安装Pytorch以及配置远端Jupyter"
+subtitle:   "Pytorch and Jupyter"
 date:       2021-03-23 14:47:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
@@ -147,6 +147,14 @@ nohup是在退出后不关闭，&命令作用为后台运行
 
 ```bash
 ps -aux|grep jupyter
+```
+
+## 查看jupyter token
+
+有时候忘记了打开的jupyter的token，可以通过以下语句查看
+
+```
+jupyter notebook list
 ```
 
 # Pytorch基础教程
