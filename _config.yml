@@ -109,9 +109,12 @@ friends: [
         href: "https://www.douban.com/people/188792951/"
     },{
         title: "LTikiTaka",
-        href: "https://mp.weixin.qq.com/s/hlOUlil4vCQ7WIntLLxYDA"
+        href: "http://ltikitaka.com/"
     },{
         title: "Kevin",
         href: "https://h5.qzone.qq.com/mqzone/profile?starttime=1617338072434&hostuin=908434374"
+    },{
+        title: 'zzq',
+        href: "https://zzzzzq.com/"
     }
 ]
