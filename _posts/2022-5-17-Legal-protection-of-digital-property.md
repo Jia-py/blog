@@ -8,7 +8,7 @@ author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
 no-catalog: False
 onTop: false
-latex: false
+latex: true
 # 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），项目，其他
 tags:
     - 生活
@@ -32,7 +32,7 @@ Criminal prosecution is by govt, once started, can only be discontinued by govt.
 6. Copyright arises automatically
 7. ...
 
-8. ![image-20220429151519071](C:\Users\JPY\AppData\Roaming\Typora\typora-user-images\image-20220429151519071.png)
+8. ![image-20221022185123539](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20221022185123539.png)
 
 software copyright: 属于copyright中的literary work s.4(1)
 

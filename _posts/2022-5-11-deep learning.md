@@ -8,7 +8,7 @@ author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
 no-catalog: False
 onTop: false
-latex: false
+latex: true
 # 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），项目，其他
 tags:
     - 笔记
@@ -208,7 +208,6 @@ v(s_t) &= \sum_{s'}\pi(s'|s_t) Q^{\pi}(s_t,a) \\
 v^{*}\left(s_{t}\right) &=\max _{a} Q^{*}\left(s_{t}, a\right) \\
 &=\max _{a} \sum_{s^{\prime}, r^{\prime}} P\left(s^{\prime}, r^{\prime} \mid s_{t}, a\right)\left[r^{\prime}+\gamma v^{*}\left(s^{\prime}\right)\right]
 \end{aligned} \\
-
 $$
 P36 Policy Learning
 
