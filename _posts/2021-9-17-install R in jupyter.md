@@ -4,9 +4,9 @@ title:      "Install R in jupyter"
 date:       2021-09-17 17:00:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
+# 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），其他
 tags:
-    - Jupyter
-    - R
+    - 文档
 ---
 
 # Background

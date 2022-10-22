@@ -5,9 +5,10 @@ subtitle:   "Python Geocoding & Pygplates Drawing Motion Tracks"
 date:       2021-03-21 15:22:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
+# 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），其他
 tags:
+    - 笔记
     - GIS
-    - Python
 ---
 
 ## Python地理编码

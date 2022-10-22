@@ -1,13 +1,14 @@
 ---
 layout:     post
-title:      "notebook - Visualization and visual analysis"
+title:      "HKU notebook - Visualization and visual analysis"
 date:       2021-09-03 19:00:00
 updatedate: 
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
 latex:      true
+# 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），其他
 tags:
-    - HKU CS
+    - 笔记
 ---
 
 # introduction

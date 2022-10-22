@@ -5,8 +5,9 @@ subtitle:   "Coursera subtitle & connection settings"
 date:       2021-01-24 17:47:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
+# 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），其他
 tags:
-    - Coursera
+    - 文档
 ---
 
 ## coursera 双语字幕 & 字幕大小修改
@@ -31,5 +32,4 @@ tags:
 - 按住win+R打开运行对话框，框里输入cmd，点击确定
 - 在闪烁的光标那里输入ipconfig/flushdns，清除DNS缓存
 - 刷新coursera视频界面，完成！
-
 

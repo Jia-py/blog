@@ -5,9 +5,9 @@ title:      "DT-GBDT-XGB-Lightgbm"
 date:       2021-02-07 21:19:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
+# 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），其他
 tags:
-    - CS
-    - Machine Learning
+    - 笔记
 ---
 <head>
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>

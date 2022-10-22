@@ -9,12 +9,10 @@ header-img: "img/leetcode.png"
 no-catalog: False
 onTop: false
 latex: false
+# 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），其他
 tags:
-    - CS
-    - LeetCode
+    - 笔记
 ---
-
-更新文档在[Leetcode Notebook - NoteBook (gitbook.io)](https://jia-pengyue.gitbook.io/notebook/algorithm/leetcode_notebook)
 
 # 1. 队列 & 栈
 
@@ -58,10 +56,12 @@ def bfs(start_node):
 
 **DFS的模板可以直接修改BFS模板中的数据结构为栈来实现**，也可以直接调**递归**，用系统中的隐式栈来实现。最糟糕的情况下空间复杂度为O(h)，h为最深深度。
 
+DFS中有关visited需不需要pop的问题，如果是要记载路径的，则是需要pop的，如果是简单搜索某个目标的，则不需要pop，因为搜索目标是代表该位置我已经走过了，不可能从这里找到目标了。
+
 递归：
 
 ```python
-visited_nodes = [start_node]
+visited_nodes = [start_node] # 需改为字典
 def dfs(node_cur, node_target, visited_nodes):
     if node_cur == node_target: return true or 0(如计算步长)
     for neighbor in node.get_neighbors():
@@ -73,15 +73,57 @@ def dfs(node_cur, node_target, visited_nodes):
 
 ## 优先队列
 
+优先队列可以使用堆实现，也可以使用queue中的PriorityQueue实现，底层均为heapq
+
+```python
+q = queue.PriorityQueue()
+q.qsize()
+q.empty() >>>> True or False
+q.put((rank, feature))
+# 默认最小堆
+q.get()
+```
+
+# 2. 堆
+
+最小堆
+
 ```python
 import heapq
+'使用heappush构建堆'
 q = []
 heapq.heappush(q,(rank,'code'))
-# m
+node = heapq.heappop(q)
+node_min = q[0]
+'使用heapify构建堆'
+data = [1,5,3,2]
+heapq.heapify(data)
+print(data,data[0])
+>>>> [1,2,3,5] 1
+'查找n_largest,n_smallest'
+print(heapq.nlargest(3,data))
+print(heapq.nsmallest(3,data))
+>>>> [5,3,2]
+>>>> [1,2,3]
+'pop出最小元素，再插入另一个值'
+heapq.heapreplace(data,12)
+'插入另一个值，pop出最小元素'
+heapq.heappushpop(data,)
+```
+
+最大堆
+
+```python
+'构建最大堆'
+# 注意这里只能使用_heapify_max的方式一次性构建最大堆
+# 若想通过heappush的方式构建，只能用于全正数的情况，将所有正数转为负数，逆向最小堆的形式构建
+heapq._heapify_max(data)
+'删除最大元素，替换另一个值'
+heapq._heapreplace_max(data,12)
 node = heapq.heappop(q)
 ```
 
-# 2. 树
+# 3. 树
 
 ## 二叉树的遍历
 
@@ -148,7 +190,7 @@ def inorderTraversal(self, root:TreeNode) -> List[int]:
             cur = stack.pop()
             cur = cur.right
         return res
-        
+
         # 后序，相同模板
         while stack or cur:
             while cur:
@@ -201,7 +243,33 @@ def levelOrder(self,root:TreeNode):
     return result
 ```
 
-# 3. 动态规划
+### 路径搜索模板
+
+```python
+def path(self, root, target):
+    ans = []
+    path = []
+    
+    def dfs(node, target):
+        if not root:
+            return
+        path.append(node)
+        if node.val == target:
+            # 这里一定要使用path[:]，这样才是深拷贝
+            # 直接使用ans.append(path)是浅拷贝，path最后均为空list
+            # 还需注意这里必须用append，不能直接赋值
+            # 因为python在函数内给list赋值
+            ans.append(path[:])
+        dfs(node.left, target)
+        dfs(node.right, target)
+        path.pop()
+    dfs(root, target)
+    return ans
+```
+
+
+
+# 4. 动态规划
 
 环形数组问题一般可以分解为`[0:-1]`与`[1:]`两个子数组的问题，或者有环情况时，反向考虑中间的部分。
 
@@ -247,7 +315,7 @@ for i in range(len(weight)):
         dp[i][j] = max(dp[j],dp[j-weight[i]] + value[i])
 ```
 
-# 4. 搜索算法
+# 5. 搜索算法
 
 ## 二分搜索
 
@@ -266,6 +334,25 @@ def binary_search(nums, target):
         else:
             right = mid - 1
     return -1
+
+def binary_search(nums, target):
+    if not nums: return -1
+    left, right = 0, len(nums) - 1
+    # 其实相当于bisect_left
+    while left < right:
+        mid = (left + right) // 2
+        if (check(mid)):
+            right = mid
+        else:  left = mid + 1
+    return left
+
+	# bisect_right
+    while left < right:
+        mid = (left + right + 1) // 2
+        if (check(mid)):
+            left = mid
+        else:  right = mid -
+    return left
 ```
 
 这里采用的是最高级的写法，可以返回最后位置左右两个元素，以解决有些题目的需求
@@ -285,7 +372,7 @@ def binary_search(nums, target):
     return -1
 ```
 
-# 5. 并查集
+# 6. 并查集
 
 此处代码模板采用了==路径压缩==的优化方法，没引入关于秩的优化。
 
@@ -319,6 +406,7 @@ class UnionFind:
             original_father = self.father[x]
             self.father[x] = root
             x = original_father
+            # x,self.father[x] = self.father[x],root
         return root
     def is_connected(self, x, y):
         return self.find(x) == self.find(y)
@@ -329,7 +417,7 @@ class UnionFind:
    	
 ```
 
-# 6. 字符串算法
+# 7. 字符串算法
 
 ## KMP匹配子串算法
 
@@ -453,6 +541,70 @@ class Trie:
         return True
 ```
 
+# 8. 位运算
+
+| 用法     | 代码          |
+| -------- | ------------- |
+| num -= 1 | num = num ^ 1 |
+| num /= 2 | num >> 1      |
+|          |               |
+
+# 9. 图
+
+## 拓扑排序
+
+```python
+class Solution(object):
+    def toposort(self,N,prerequisites):
+        # N: number of nodes; prerequisites: edge list
+        graph = collections.defaultdict(list)
+        indegrees = collections.defaultdict(int)
+        for u,v in prerequisites:
+            graph[v].append(u)
+            indegrees[u] += 1
+        # 最多执行N次删减
+        for i in range(N):
+            # 是否包含入度为0的节点
+            zeroDegree = False
+            for j in range(N):
+                if indegrees[j] == 0:
+                    zeroDegrees = True
+                    break
+            if not zeroDegree: return False
+            indegrees[j] = -1
+            for node in graph[j]:
+                indegrees[node] -= 1
+        return True
+```
+
+## Dijkstra
+
+```python
+# 建图的步骤省略，建图的方式不同，后续的代码会有一些不同
+# 这里的建图方式为字典dict[node] = [(node1,cost1),(node2,cost2),...]
+def dijkstra(graph):
+    n = len(graph)
+    dist = [float('inf')] * n
+    # 起始点距离初始化
+    dist[0] = 0
+    visited = set()
+    # 前面为cost，后面为当前节点索引
+    heap = [(0,0)]
+    # 循环n次，每次确定一个节点的最小距离
+    for _ in range(n):
+        _, min_index = heapq.heappop(heap)
+        visited.add(min_index)
+        # 遍历该节点的邻居
+        for v, cost in graph[min_index]:
+            if v not in visited:
+                new_dist = dist[min_index] + cost
+				# 若当前距离小于记录的距离，则更新
+                if dist[v] > new_dist:
+                    dist[v] = new_dist
+                    heapq.heappush(heap,(dist[v],v))
+    return dist 
+```
+
 # A. 随机算法
 
 ## Fisher-Yates洗牌算法
@@ -467,9 +619,110 @@ def shuffle(lis) -> List[int]:
         return lis
 ```
 
+## 水塘抽样算法
 
+让链表数据每个数据被选择的概率都是`1/n`的做法，从链表头开始，遍历整个链表，对遍历到的第`i`个节点，随机选择区间`[0,i)`内的一个整数，如果其等于0，则将答案置为该节点值，否则答案不变。
+
+证明：
+
+![image-20220116001622915](https://raw.githubusercontent.com/Jia-py/blog_picture/master/img/image-20220116001622915.png)
+
+```python
+def getRandom(self) -> int:
+        node, i, ans = self.head, 1, 0
+        while node:
+            if randrange(i) == 0:  # 1/i 的概率选中（替换为答案）
+                ans = node.val
+            i += 1
+            node = node.next
+        return ans
+```
 
 # B. Python
+
+## 构造链表或树
+
+```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+```
+
+## 详解python函数内外变量引用
+
+不可变变量：int, str, float, tuple；无论在函数内如何操作，都不改变全局变量的值，除非使用`nonlocal`申明。
+
+可变变量：dic, list；在函数内进行直接赋值，不改变全局变量的值，除非使用`nonlocal`申明。**作为参数传入时，只能使用append等操作函数，直接赋值将不对该参数产生影响。**
+
+另外，请注意`lis.append(path)`，是一个浅拷贝，path改变时，lis也会改变，如不想如此应使用`lis.append(path[:])`
+
+## ACM 构造输入
+
+1. 每行都是一致的可以使用`sys.stdin`构造
+
+```python
+import sys
+for line in sys.stdin:
+    ...
+```
+
+2. 每行不一致
+
+```python
+n = int(input())
+str = input()
+read_list = list(map(int, input().split()))
+```
+
+另外，不换行输出可以使用`print(x,end='')`
+
+## str
+
+```python
+str.strip('1a') # 移除字符串首位所有的1或a
+# 反转字符串
+''.join(reversed(str))
+# 反转list，不需要赋值
+lis.reverse()
+str[::-1] # t
+# 输出list中元素为字符串，每个字符中添加一个空格
+' '.join(lis)
+
+# 判断是否为数字，字母，字母或数字
+str.isdigit()
+str.isalpha()
+str.isalnum()
+```
+
+## all any
+
+都用于iterator
+
+```python
+# all只有全真才返回True，有一个假则返回False；另外，空也为True
+all['a',(2,3),1,True] >>> True
+all([]) >>> True
+# any只有全假才返回False，有一个真则返回True；另外，空也为False
+any('',(),0,False) >>> False
+any({}) >>> False
+```
+
+## input print
+
+```python
+x = input()
+# print不换行
+print(x,end='')
+# print间隔小空格
+print('',x)
+```
 
 ## inf
 
@@ -479,7 +732,16 @@ float('-inf')
 int(1e9)
 ```
 
-## 基础数据结构
+## reduce
+
+```python
+from functools import reduce
+# 依照序列计算
+reduce(lambda x,y:x+y, nums)
+# reduce(lambda x, y: x+y, [1, 2, 3, 4, 5])  计算的就是((((1+2)+3)+4)+5)
+```
+
+## 基础数据结构 Set Tuple
 
 set 集合：集合是无序**不重复元素的序列，不支持索引**
 
@@ -508,7 +770,11 @@ tuple 元组: 只能查看，不能增删改。元组的连接可以使用`+`
 
 ## ASCII
 
-`ord('a') == 97`
+```python
+ord('a') == 97
+chr(97)
+>>>> 'a'
+```
 
 ## 位运算
 
@@ -526,9 +792,120 @@ python中的位运算只能用于`int`类型
 经典位运算操作：
 
 1. 除以2 `number >> 1`
-2. 一个2^n^的数字与另一个[2^n-1^,2^n^)的数字求和，可以使用`number1 | number2`
+2. 一个$$2^n$$的数字与另一个$$[2^{n-1},2^n)$$的数字求和，可以使用`number1 | number2`
+3. 将某位改为1：`num |= (1<<idx)`
+4. 将某位改为0：`num &= ~(1<<idx)`
+5. int转二进制字符串：`s = bin(num)[2:]`
 
-## Zip
+## 内置库
+
+### math
+
+```python
+# 阶乘
+math.factorial(n)
+# 求C_{n}^{m}
+math.factorial(n) // (math.factorial(m) * math.factorial())
+```
+
+### Collections library
+
+* collections.deque()
+* collections.Counter()
+  * 支持用字典、字符串、list进行初始化，相当于生成一个记录count的字典。
+  * 可以使用`sorted(counter)`对key值进行排序
+  * 支持使用`counter.most_common(n)`返回最多的前n个item
+  * counter是一个字典，其中的key是没有顺序的，两个不同的counter可以比较是否相同。
+
+### bisect library
+
+* bisect_left(list,value,lo=0,hi=None)
+
+  * 在列表list中搜索适合插入value的位置，但不会真正插入。当在list中出现value时，返回value左边==空缺==位置的索引。lo为搜索的起始位置，默认为0。hi为搜索的结束位置，默认为len(a)。
+
+  * ```python
+    li = [1, 23, 45, 12, 23, 42, 54, 123, 14, 52, 3]
+    li.sort()
+    print(li)
+    print(bisect.bisect_left(li, 3))
+    # return
+    # [1, 3, 12, 14, 23, 23, 42, 45, 52, 54, 123]
+    # 1
+    ```
+
+* bisect_right(list,value,lo=0,hi=None)，同理。
+
+* insort_left(list, value, lo=0, hi=None)  insort_right(list, value, lo=0, hi=None). 在列表list中搜索适合插入value的位置，并真正插入。其他与bisect相同。
+
+* **有序插入**
+
+```python
+l = []
+bisect.insort(l,number) # 其实对应insort_right
+bisect.insort_left(l,number) # 出现重复值时插入到左边
+```
+
+### Random library
+
+```python
+random.randint(1,10) # 注意10是可以取到的
+random.random() # 0-1之间随机浮点数
+random.uniform(1.1,5.4) # 随机浮点数
+random.choice('tomorrow') # list中选取一个元素
+random.randrange(1,100,2)
+random.shuffle(list) # 随机打乱一个数组，注意该操作没有返回值，只是打乱list
+```
+
+### Sorted
+
+```python
+sorted(iterable, cmp=None, key=None, reverse=False)
+```
+
+* 返回排序数组的原索引列表 
+
+```python
+index = sorted(range(len(list)),key=lambda k:list[k])
+```
+
+* 根据数组第几列sort
+
+
+```python
+sorted(list,key = lambda a:a[2])
+```
+
+* 数组切片排序
+
+```python
+nums[::2] = sorted(nums[::2])
+```
+
+### map()
+
+```python
+map(function, iterable, ...)
+```
+
+将function用于list中每个元素，返回一个迭代器
+
+```python
+# 将list每个元素取绝对值
+lis = list(map(abs,lis))
+# 平方
+lis = list(map(lambda x: x ** 2, lis))
+```
+
+### pow()
+
+```python
+# 返回a^b
+pow(a,b)
+# 返回(a^b)%c
+pow(a,b,c)
+```
+
+### Zip
 
 zip函数可将可迭代的对象作为参数，将对象中对应元素打包成一个元组，然后返回由这些元组组成的列表。
 
@@ -551,83 +928,16 @@ list(zip(*str))
 col_maxes = [max(col) for col in zip(*two_D_list)]
 ```
 
-## Collections library
+### divmod()
 
-* collections.deque()
-* collections.Counter()
-  * 支持用字典、字符串、list进行初始化，相当于生成一个记录count的字典。
-  * 可以使用`sorted(counter)`对key值进行排序
-  * 支持使用`counter.most_common(n)`返回最多的前n个item
-  * counter是一个字典，其中的key是没有顺序的，两个不同的counter可以比较是否相同。
-
-## bisect library
-
-* bisect_left(list,value,lo=0,hi=None)
-
-  * 在列表list中搜索适合插入value的位置，但不会真正插入。当在list中出现value时，返回value左边==空缺==位置的索引。lo为搜索的起始位置，默认为0。hi为搜索的结束位置，默认为len(a)。
-
-  * ```python
-    li = [1, 23, 45, 12, 23, 42, 54, 123, 14, 52, 3]
-    li.sort()
-    print(li)
-    print(bisect.bisect_left(li, 3))
-    # return
-    # [1, 3, 12, 14, 23, 23, 42, 45, 52, 54, 123]
-    # 1
-    ```
-
-* bisect_right(list,value,lo=0,hi=None)，同理。
-
-* insort_left(list, value, lo=0, hi=None)  insort_right(list, value, lo=0, hi=None). 在列表list中搜索适合插入value的位置，并真正插入。其他与bisect相同。
-
-## Random library
-
-* random.shuffle(list)  随机打乱一个数组，注意该操作没有返回值，只是打乱list。
-
-## Sorted
+一个函数返回商与余数
 
 ```python
-sorted(iterable, cmp=None, key=None, reverse=False)
+divmod(7, 2)
+>>> (3,1)
 ```
 
-* 返回排序数组的原索引列表 
-
-```python
-index = sorted(range(len(list)),key=lambda k:list[k])
-```
-
-* 根据数组第几列sort
-
-
-```python
-sorted(list,key = lambda a:a[2])
-```
-
-## map()
-
-```python
-map(function, iterable, ...)
-```
-
-将function用于list中每个元素，返回一个迭代器
-
-```python
-# 将list每个元素取绝对值
-lis = list(map(abs,lis))
-# 平方
-lis = list(map(lambda x: x ** 2, lis))
-```
-
-## pow()
-
-```python
-# 返回a^b
-pow(a,b)
-# 返回(a^b)%c
-pow(a,b,c)
-```
-
-## datetime
+### datetime
 
 ```python
 import datetime
@@ -650,5 +960,26 @@ x.strftime('%M') # minute,e.g.,41
 x.strftime('%S') # second,e.g.,30
 x.strftime('%j') # 一年中的天数,365
 x.strftime('%W') # 第几周，每周第一天是周一
+```
+
+## sortedcontainers
+
+非标准库，但leetcode可以调用。link [Sorted Containers documentation](http://www.grantjenks.com/docs/sortedcontainers/index.html)
+
+```python
+from sortedcontainers import SortedList
+sl = SortedList(['e', 'a', 'c', 'd', 'b'])
+s1.add(number)
+s1.discard(number) # number可以不在list中
+s1.remove(number) # number必须在list中
+s1.pop(0) s1.pop(-1)
+s1.bisect_left() s1.bisect_right()
+s1.count()
+s1.index()
+from sortedcontainers import SortedDict
+sd = SortedDict({'c': 3, 'a': 1, 'b': 2})
+# 删除某项与传统字典一致
+sd.pop(key)
+sd.popitem(index=-1) # 传统字典是随机返回，而这里可以根据index返回
 ```
 

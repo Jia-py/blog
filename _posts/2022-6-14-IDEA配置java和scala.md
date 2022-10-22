@@ -9,8 +9,9 @@ header-img: "img/post-bg-2015.jpg"
 no-catalog: False
 onTop: false
 latex: false
+# 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），项目，其他
 tags:
-    - Meituan
+    - 文档
 ---
 
 # 下载IDEA

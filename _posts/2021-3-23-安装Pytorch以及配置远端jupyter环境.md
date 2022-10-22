@@ -5,9 +5,9 @@ subtitle:   "Pytorch and Jupyter"
 date:       2021-03-23 14:47:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
+# 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），其他
 tags:
-    - Pytorch
-    - Python
+    - 文档
 ---
 # 本地PyTorch
 

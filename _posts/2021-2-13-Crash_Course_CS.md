@@ -5,8 +5,9 @@ title:      "Crash Course Computer Science"
 date:       2021-02-13 00:00:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
+# 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），其他
 tags:
-    - CS
+    - 笔记
 ---
 
 [Github 中文字幕](https://github.com/1c7/crash-course-computer-science-chinese)

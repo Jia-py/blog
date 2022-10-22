@@ -5,8 +5,9 @@ title:      "Jeckyll Markdown Tips"
 date:       2021-02-07 21:43:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
+# 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），其他
 tags:
-    - Jeckyll
+    - 文档
 ---
 
 

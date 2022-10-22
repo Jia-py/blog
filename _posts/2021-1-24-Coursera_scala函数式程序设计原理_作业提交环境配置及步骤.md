@@ -5,9 +5,9 @@ subtitle:   "Coursera-Scala Environment Configuration"
 date:       2021-01-24 17:46:00
 author:     "Jpy"
 header-img: "img/coursera.jpg"
+# 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），其他
 tags:
-    - Coursera
-    - Scala
+    - 文档
 ---
 
 ### Coursera中Scala课程推荐使用的环境为Intellij IDEA + sbt

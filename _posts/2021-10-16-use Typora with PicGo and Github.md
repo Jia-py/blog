@@ -5,8 +5,9 @@ subtitle:   "使用PicGo与Github实现Typora截图自动上传图床"
 date:       2021-10-16 02:00:00
 author:     "Jpy"
 header-img: "img/post-bg-2015.jpg"
+# 生活，工作，笔记（个人理解消化心得），文档（方便后续查阅的资料整理），其他
 tags:
-    - PC
+    - 文档
 ---
 
 # 背景
